@@ -1,0 +1,2098 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cumple de Timoteo</title>
+<meta name="description" content="Viernes 9 de octubre · 18:00 a 20:30 · Hakuna Matata Fútbol">
+<meta property="og:type" content="website">
+<meta property="og:title" content="¡Timoteo cumple 6! 🧀">
+<meta property="og:description" content="Viernes 9 de octubre · 18:00 a 20:30 · Hakuna Matata Fútbol">
+<meta property="og:image" content="https://javiertecnostore-sudo.github.io/cumple-timo/og-tyj.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://tinyurl.com/cumple-de-timo">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#5a130e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Shrikhand&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/jerry_titere.webp">
+<link rel="preload" as="image" href="img/asomados.webp">
+<script>
+  // La invitación arranca con el TELÓN CERRADO: nada se abre solo, se abre con el botón (o tocando el telón, o con una tecla).
+  // «mov» = se permite movimiento (el que mira no pidió menos movimiento). La función de la tarjeta («anim») arranca
+  // recién cuando se abre el telón, así se ve desde el principio. Sin JavaScript no hay telón: la tarjeta se ve directo.
+  (function(h){
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('mov');
+    h.classList.add('cerrado');
+    if((window.AudioContext||window.webkitAudioContext)&&window.fetch){
+      h.classList.add('audio');
+      // el sonido de la apertura (telón, ta-da, cortina MGM) se empieza a traer ya, antes que las imágenes de la tarjeta:
+      // es lo primero que suena. El módulo de sonido (al final de la página) lo toma de acá; nada se pide dos veces.
+      try{var pre=window.timoPrecarga={};['cortina','musica_apertura'].forEach(function(n){
+        pre[n]=fetch('sonido/'+n+'.mp3',{priority:'high'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.arrayBuffer()});
+        pre[n].catch(function(){});
+      })}catch(e){}
+    }
+    try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){} // al recargar, la función empieza arriba
+  })(document.documentElement);
+</script>
+<style>
+:root{
+  --rojo:#c1312a;--rojo-2:#b02820;--rojo-osc:#7a1a13;--borravino:#5a130e;
+  --crema:#fbeed3;--papel:#f6e8cb;--papel-2:#efdcb5;--queso:#f8c945;--queso-2:#eaa92a;
+  --tinta:#26160f;--azul:#1f3b66;--azul-2:#2c528c;--madera:#7b3c1f;--gris:#6f5a45;
+  --grano:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .15 0 0 0 0 .08 0 0 0 0 .04 0 0 0 1.6 -.55'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  --terciopelo:
+    linear-gradient(0deg,#e0a92e 0 7px,var(--tinta) 7px 9.5px,transparent 9.5px),
+    linear-gradient(rgba(20,2,0,.45),transparent 22%,transparent 70%,rgba(20,2,0,.45)),
+    repeating-linear-gradient(90deg,#5e100c 0,#9e2219 8px,#cf4636 14px,#a3241b 21px,#5e100c 30px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--borravino)}
+body{font-family:Nunito,system-ui,sans-serif;color:var(--tinta);min-height:100vh;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.45),transparent 18%,transparent 82%,rgba(0,0,0,.45)),
+    repeating-linear-gradient(90deg,#5a130e 0 14px,#6e1c15 22px,#5a130e 36px,#4a0f0b 44px);
+  overflow-x:hidden}
+img{display:block;max-width:none}
+.tarjeta{max-width:460px;margin:0 auto;background:var(--papel);position:relative;overflow:hidden;
+  box-shadow:0 0 0 3px var(--tinta),0 30px 80px rgba(0,0,0,.6)}
+
+/* ================= PANTALLA (cartel + episodio) ================= */
+.marco{background:#120a07}
+.pantalla{position:relative;overflow:hidden;background:var(--rojo-2);isolation:isolate}
+/* rayos de fondo: giran despacito (12° = un rayo, así el giro no tiene salto) */
+.sol{position:absolute;left:50%;top:44%;width:1240px;height:1240px;margin:-620px 0 0 -620px;z-index:0;pointer-events:none;
+  background:repeating-conic-gradient(from 0deg at 50% 50%,var(--rojo) 0 6deg,var(--rojo-2) 6deg 12deg)}
+html.anim .sol{animation:sol 7s linear infinite}
+@keyframes sol{to{transform:rotate(12deg)}}
+.vineta{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 80% 60% at 50% 42%,transparent 45%,rgba(40,6,3,.55) 100%)}
+/* grano de película + rayitas */
+.pantalla::after{content:"";position:absolute;inset:-90px;background:var(--grano);opacity:.2;pointer-events:none;z-index:20}
+html.anim .pantalla::after{animation:grano .5s steps(1) infinite}
+@keyframes grano{0%{transform:translate(0,0)}25%{transform:translate(-37px,21px)}50%{transform:translate(29px,-44px)}75%{transform:translate(-18px,-12px)}}
+.rayita{position:absolute;top:0;bottom:0;left:0;width:2px;background:rgba(255,238,200,.35);z-index:21;opacity:0;pointer-events:none}
+html.anim .rayita{animation:rayita 6.5s steps(1) infinite}
+@keyframes rayita{0%{opacity:0}9%{opacity:1;transform:translateX(62px)}10%{opacity:0}46%{opacity:.8;transform:translateX(300px)}47.5%{opacity:0}78%{opacity:.7;transform:translateX(188px)}79%{opacity:0}}
+.cartel{position:relative;text-align:center;padding:22px 16px 0;z-index:2}
+.presenta{display:flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;font-weight:900;font-size:10.5px;letter-spacing:2.4px;
+  text-transform:uppercase;color:var(--crema);text-shadow:0 2px 0 rgba(38,22,15,.6)}
+.presenta b{font-weight:900;color:var(--queso)}
+.presenta::before,.presenta::after{content:"";height:2px;flex:0 1 28px;background:var(--crema);opacity:.7;border-radius:2px}
+.tyj{font-family:Shrikhand,Georgia,serif;font-size:40px;line-height:1.05;color:var(--crema);margin-top:6px;letter-spacing:.5px;
+  text-shadow:0 3px 0 var(--tinta),3px 3px 0 var(--tinta),-2px 3px 0 var(--tinta),0 7px 0 rgba(38,22,15,.35);transform:rotate(-3deg)}
+.tyj em{font-style:normal;font-size:.62em;color:var(--queso);margin-left:2px}
+.asomo{position:relative;margin-top:2px}
+.asomados{position:relative;z-index:3;width:80%;height:auto;margin:0 auto;pointer-events:none}
+.placa{position:relative;z-index:2;margin:-7.9% 0 0;background:var(--crema);border:4px solid var(--tinta);border-radius:18px;
+  padding:34px 14px 18px;box-shadow:0 7px 0 var(--tinta)}
+.placa::before{content:"";position:absolute;inset:6px;border:2px solid var(--rojo);border-radius:12px;pointer-events:none}
+.placa::after{content:"";position:absolute;inset:0;border-radius:14px;background:var(--grano);opacity:.1;pointer-events:none}
+h1{position:relative;font-family:'Luckiest Guy',Impact,sans-serif;font-weight:400;font-size:clamp(44px,13.4vw,58px);line-height:.92;
+  color:var(--rojo);letter-spacing:1px;-webkit-text-stroke:2.5px var(--tinta);paint-order:stroke fill;
+  text-shadow:0 3px 0 var(--tinta),0 6px 0 var(--queso-2),0 8px 0 var(--tinta)}
+.cinta{position:relative;display:inline-block;margin-top:14px;font-family:'Luckiest Guy',Impact,sans-serif;font-size:21px;letter-spacing:1px;
+  color:var(--crema);background:var(--azul);border:3px solid var(--tinta);padding:9px 18px 5px;border-radius:4px;transform:rotate(-1.5deg);
+  box-shadow:0 4px 0 var(--tinta)}
+.cinta::before,.cinta::after{content:"";position:absolute;top:9px;width:20px;height:100%;background:var(--azul-2);border:3px solid var(--tinta);z-index:-1}
+.cinta::before{left:-17px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,42% 50%)}
+.cinta::after{right:-17px;clip-path:polygon(0 0,100% 0,58% 50%,100% 100%,0 100%)}
+
+/* con el control chiquito de la esquina (aparece al abrirse el telón), el cartel deja lugar arriba:
+   el control no tapa «Timo Producciones presenta» */
+html.audio .cartel{padding-top:62px}
+
+/* tira de película al pie de la pantalla (corre como en el proyector) */
+.pelicula{position:relative;z-index:2;height:26px;margin-top:20px;background:#140b08;border-top:3px solid var(--tinta);overflow:hidden}
+.pelicula::before{content:"";position:absolute;top:0;bottom:0;left:0;right:-26px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Crect x='7' y='8' width='12' height='10' rx='2.5' fill='%23ead7ae'/%3E%3C/svg%3E") repeat-x 0 0/26px 26px}
+html.anim .pelicula::before{animation:film .9s linear infinite}
+@keyframes film{to{transform:translateX(-26px)}}
+/* ---------- escena ---------- */
+.escena{position:relative;margin:22px 12px 0;border:4px solid var(--tinta);border-radius:16px;overflow:hidden;
+  aspect-ratio:390/270;background:#f3e2bf;box-shadow:0 7px 0 var(--tinta);z-index:2}
+.stage{position:absolute;left:0;top:0;width:390px;height:270px;transform-origin:0 0}
+.pared{position:absolute;left:0;top:0;width:390px;height:170px;
+  background:
+    radial-gradient(circle,#c9785c 1.7px,transparent 2.4px) 13px 22px/26px 30px,
+    repeating-linear-gradient(90deg,transparent 0 23px,rgba(176,62,40,.22) 23px 25px,transparent 25px 28px,rgba(176,62,40,.22) 28px 30px,transparent 30px 52px),
+    linear-gradient(#f7e8c9,#eed9b1)}
+.pared::after{content:"";position:absolute;left:0;right:0;bottom:0;height:26px;background:linear-gradient(transparent,rgba(90,40,15,.18))}
+.banderines{position:absolute;left:0;top:0;width:390px;height:40px}
+.cuadro{position:absolute;left:300px;top:36px;width:76px;height:76px;transform-origin:50% -10px}
+.cuadro::before{content:"";position:absolute;left:50%;top:-14px;width:2px;height:16px;background:var(--tinta);transform:translateX(-50%)}
+.cuadro-in{position:absolute;inset:0;border-radius:50%;border:5px solid #c8912c;box-shadow:0 0 0 2.5px var(--tinta),inset 0 0 0 2.5px var(--tinta),3px 5px 0 rgba(38,22,15,.25);
+  background:radial-gradient(circle at 40% 35%,#fff6df,#f0d9a8);overflow:hidden;display:grid;place-items:center}
+.cuadro-in span{font-family:'Luckiest Guy';font-size:40px;color:var(--rojo);-webkit-text-stroke:2px var(--tinta);paint-order:stroke fill;padding-top:6px}
+.zocalo{position:absolute;left:0;top:168px;width:390px;height:38px;border-top:3px solid var(--tinta);border-bottom:3px solid var(--tinta);
+  background:linear-gradient(#9a5430 0 5px,#6a3017 5px 7px,#83421f 7px 100%)}
+.cueva{position:absolute;left:288px;top:142px;width:46px;height:64px;border-radius:23px 23px 0 0;background:#1a0e09;
+  border:3px solid var(--tinta);border-bottom:0;box-shadow:inset 0 0 0 3px #5b2a14,inset 6px 8px 12px rgba(0,0,0,.6)}
+.piso{position:absolute;left:0;top:206px;width:390px;height:64px;
+  background:
+    linear-gradient(rgba(60,25,8,.28),transparent 30%),
+    repeating-linear-gradient(0deg,#b8703d 0 14px,#8f4f26 14px 16px),
+    #b8703d}
+.piso::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 96px,rgba(80,34,12,.45) 96px 98px,transparent 98px 150px);
+  -webkit-mask:linear-gradient(transparent 0 2px,#000 2px 14px,transparent 14px 18px,#000 18px 30px,transparent 30px 34px,#000 34px);mask:linear-gradient(transparent 0 2px,#000 2px 14px,transparent 14px 18px,#000 18px 30px,transparent 30px 34px,#000 34px)}
+
+.actor{position:absolute;left:0;top:0;will-change:transform,opacity;opacity:0}
+.actor img{width:100%;height:auto}
+.sombra{position:absolute;left:12%;right:12%;height:10px;border-radius:50%;background:rgba(40,15,5,.28)}
+/* todo lo que forma parte del episodio comparte el mismo reloj de 14 s. Arranca en 0 justo cuando el telón de la entrada
+   terminó de abrirse: mientras se abre, la función espera quieta en su primer cuadro (html.previa, más abajo) */
+html.anim .L{animation-duration:14s;animation-timing-function:linear;animation-iteration-count:infinite;animation-delay:0s;animation-fill-mode:both}
+html.anim .actor{opacity:1}
+.espejo{transform:scaleX(-1)}
+.burbuja svg{display:block;width:100%;height:auto}
+.bob{position:relative;will-change:transform}
+@keyframes trote{from{transform:translateY(0)}to{transform:translateY(-5px) rotate(-2deg)}}
+@keyframes galope{from{transform:translateY(0) rotate(0)}to{transform:translateY(-7px) rotate(-3deg)}}
+@keyframes saludo{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+@keyframes paseo{from{transform:rotate(-3.5deg) translateY(0)}to{transform:rotate(3.5deg) translateY(-3px)}}
+@keyframes giro{to{transform:rotate(360deg)}}
+@keyframes titila{from{transform:scale(.86,1.08) rotate(-5deg)}to{transform:scale(1.08,.9) rotate(5deg)}}
+@keyframes sacudon{0%{transform:translate(0,0) rotate(0)}25%{transform:translate(-3px,2px) rotate(-2deg)}50%{transform:translate(3px,-2px) rotate(1.5deg)}75%{transform:translate(-2px,-3px) rotate(2deg)}100%{transform:translate(2px,3px) rotate(-1deg)}}
+.rayas{position:absolute;right:100%;top:30%;width:44px;height:40%;margin-right:-8px;
+  background:repeating-linear-gradient(transparent 0 6px,rgba(38,22,15,.55) 6px 8.5px,transparent 8.5px 14px);border-radius:3px;
+  -webkit-mask:linear-gradient(90deg,transparent,#000);mask:linear-gradient(90deg,transparent,#000)}
+
+/* --- elenco --- */
+.jr{width:110px;transform-origin:100% 100%}
+.jr .sombra{bottom:-4px;left:25%}
+html.anim .jr{animation-name:jr}
+html.anim .jr .bob{animation:trote .22s ease-in-out infinite alternate}
+.tl{width:190px;transform-origin:100% 50%}
+html.anim .tl{animation-name:tl}
+.estrellas{width:60px;height:24px}
+.estrellas svg{position:absolute;left:21px;top:3px;width:18px;height:18px}
+html.anim .estrellas svg{animation:orbita .66s linear infinite}
+.estrellas svg:nth-child(2){animation-delay:-.22s !important}
+.estrellas svg:nth-child(3){animation-delay:-.44s !important}
+html.anim .estrellas{animation-name:estrellas}
+@keyframes orbita{
+  0%{transform:translate(24px,0) scale(.95)}
+  12.5%{transform:translate(17px,6px) scale(1.1)}
+  25%{transform:translate(0,8px) scale(1.18)}
+  37.5%{transform:translate(-17px,6px) scale(1.1)}
+  50%{transform:translate(-24px,0) scale(.95)}
+  62.5%{transform:translate(-17px,-6px) scale(.8)}
+  75%{transform:translate(0,-8px) scale(.72)}
+  87.5%{transform:translate(17px,-6px) scale(.8)}
+  100%{transform:translate(24px,0) scale(.95)}
+}
+.sp{width:150px;transform-origin:0 100%}
+.sp .sombra{bottom:14px}
+html.anim .sp{animation-name:sp}
+html.anim .sp .bob{animation:galope .28s ease-in-out infinite alternate}
+.ts{width:124px;transform-origin:50% 100%}
+.ts .sombra{bottom:-3px}
+html.anim .ts{animation-name:ts}
+.tf{width:160px;transform-origin:50% 100%}
+.tf .sombra{bottom:2px;left:6%;right:40%}
+html.anim .tf{animation-name:tf}
+html.anim .tf .bob,html.anim .tc .bob{animation:trote .12s linear infinite alternate}
+.tc{width:160px}
+.tc .sombra{bottom:2px;left:6%;right:40%}
+html.anim .tc{animation-name:tc}
+.jq{width:100px;transform-origin:50% 100%}
+.jq .sombra{bottom:-3px;left:18%;right:18%}
+html.anim .jq{animation-name:jq}
+html.anim .jq .bob{animation:paseo .3s ease-in-out infinite alternate;transform-origin:50% 100%}
+.vela{position:absolute;left:61px;top:-33px;width:23px;transform-origin:50% 100%;opacity:0}
+.vela svg{display:block;width:100%;height:auto;overflow:visible}
+html.anim .vela{animation-name:vela}
+.llama{transform-box:fill-box;transform-origin:50% 100%}
+html.anim .llama{animation:titila .16s ease-in-out infinite alternate}
+.chispa{position:absolute;left:56px;top:-54px;width:26px;opacity:0}
+html.anim .chispa{animation-name:chispa}
+.excl{position:absolute;left:8px;top:-34px;width:22px;opacity:0;transform-origin:50% 100%}
+html.anim .excl{animation-name:excl}
+.nube{width:200px;transform-origin:50% 60%}
+html.anim .nube{animation-name:nube}
+html.anim .nube .sacudir{animation:sacudon .14s steps(1) infinite}
+.juntos{width:250px;transform-origin:50% 100%}
+html.anim .juntos{animation-name:juntos}
+.torta{width:88px;transform-origin:50% 100%}
+.torta .sombra{bottom:-2px;left:6%;right:6%}
+html.anim .torta{animation-name:torta}
+.feliz{width:160px;transform-origin:50% 50%}
+html.anim .feliz{animation-name:feliz}
+.paf{width:92px}
+html.anim .paf{animation-name:paf}
+.guau{width:120px;transform-origin:85% 100%}
+html.anim .guau{animation-name:guau}
+.puf{width:60px}
+html.anim .puf{animation-name:puf}
+html.anim .cuadro{animation-name:cuadro}
+.cf{width:7px;height:11px;border-radius:1.5px;background:var(--c);box-shadow:inset 0 0 0 1.2px rgba(38,22,15,.55)}
+html.anim .cf{animation-name:cf;animation-delay:var(--t)}
+.cortina{display:none;position:absolute;top:0;width:197px;height:270px;background:var(--terciopelo);z-index:5}
+.cortina.i{left:0;transform-origin:0 50%;box-shadow:inset -3px 0 0 rgba(20,2,0,.55)}
+.cortina.d{left:193px;transform-origin:100% 50%;box-shadow:inset 3px 0 0 rgba(20,2,0,.55)}
+html.anim .cortina{display:block}
+html.anim .cortina.i{animation-name:cortinaI}
+html.anim .cortina.d{animation-name:cortinaD}
+
+/* ===== línea de tiempo del episodio (14 s) ===== */
+@keyframes cortinaI{
+  0%,0.714%{transform:none;animation-timing-function:cubic-bezier(.55,.05,.35,1)}
+  6.071%,93.214%{transform:translateX(-101%) scaleX(.3);animation-timing-function:cubic-bezier(.4,0,.3,1)}
+  97.143%,100%{transform:none}
+}
+@keyframes cortinaD{
+  0%,0.714%{transform:none;animation-timing-function:cubic-bezier(.55,.05,.35,1)}
+  6.071%,93.214%{transform:translateX(101%) scaleX(.3);animation-timing-function:cubic-bezier(.4,0,.3,1)}
+  97.143%,100%{transform:none}
+}
+/* 1) persecución: Jerry a la cueva, Tom contra la pared */
+@keyframes jr{
+  0%,4.286%{transform:translate(-140px,183px);opacity:1}
+  15.714%{transform:translate(196px,183px);opacity:1}
+  17.286%{transform:translate(212px,168px) scale(.45);opacity:0}
+  17.357%,100%{transform:translate(-140px,183px);opacity:0}
+}
+@keyframes tl{
+  0%,7.5%{transform:translate(-230px,150px) rotate(0);opacity:1;animation-timing-function:ease-out}
+  13.214%{transform:translate(-30px,124px) rotate(-4deg);animation-timing-function:ease-in}
+  18.214%{transform:translate(128px,146px) rotate(0)}
+  18.786%{transform:translate(134px,146px) scaleX(.86)}
+  20%{transform:translate(118px,164px) rotate(5deg) scaleX(1);animation-timing-function:ease-in}
+  20.714%{transform:translate(116px,172px) rotate(3deg)}
+  24.143%{transform:translate(116px,172px) rotate(3deg);opacity:1}
+  24.286%,100%{transform:translate(-230px,150px);opacity:0}
+}
+@keyframes puf{
+  0%,16.857%{opacity:0;transform:translate(281px,174px) scale(.4)}
+  17.286%{opacity:1;transform:translate(281px,174px) scale(.8)}
+  20%{opacity:0;transform:translate(281px,164px) scale(1.35)}
+  38.857%{opacity:0;transform:translate(281px,174px) scale(.4)}
+  39.286%{opacity:1;transform:translate(281px,174px) scale(.8)}
+  41.857%,100%{opacity:0;transform:translate(281px,164px) scale(1.35)}
+}
+@keyframes paf{
+  0%,18.143%{opacity:0;transform:translate(214px,98px) scale(.3)}
+  18.571%{opacity:1;transform:translate(214px,98px) scale(1.15) rotate(-6deg)}
+  19.429%{transform:translate(214px,98px) scale(1) rotate(-3deg)}
+  22.5%{opacity:1;transform:translate(214px,98px) scale(1) rotate(-3deg)}
+  23.571%,100%{opacity:0;transform:translate(214px,98px) scale(.9)}
+}
+@keyframes estrellas{
+  0%,19.571%{opacity:0;transform:translate(198px,156px) scale(.4)}
+  20.286%{opacity:1;transform:translate(198px,156px) scale(1.1)}
+  21%{transform:translate(198px,156px) scale(1)}
+  23.571%{opacity:1;transform:translate(198px,160px) scale(1)}
+  24.143%,100%{opacity:0;transform:translate(198px,160px) scale(.6)}
+}
+@keyframes cuadro{
+  0%,18.429%{transform:rotate(0)}
+  19%{transform:rotate(-10deg)}
+  19.714%{transform:rotate(8deg)}
+  20.429%{transform:rotate(-5deg)}
+  21.143%{transform:rotate(3deg)}
+  21.857%,25.714%{transform:rotate(0)}
+  26.286%{transform:rotate(-6deg)}
+  27%{transform:rotate(4deg)}
+  27.714%,100%{transform:rotate(0)}
+}
+/* 2) llega Spike: ¡GUAU!, Tom se asusta y huye */
+@keyframes sp{
+  0%,21.786%{transform:translate(-190px,117px)}
+  25%{transform:translate(10px,117px);animation-timing-function:ease-out}
+  25.857%{transform:translate(2px,117px) rotate(-3deg)}
+  26.786%{transform:translate(4px,117px) scale(1.05)}
+  27.857%{transform:translate(4px,117px) scale(1)}
+  28.929%{transform:translate(4px,117px) scale(1.05)}
+  30%{transform:translate(4px,117px) scale(1)}
+  31.071%{transform:translate(4px,117px) scale(1.05)}
+  32.857%{transform:translate(4px,117px) scale(1);animation-timing-function:ease-in}
+  40%,100%{transform:translate(440px,117px)}
+}
+@keyframes guau{
+  0%,24.857%{opacity:0;transform:translate(36px,12px) scale(.3)}
+  25.571%{opacity:1;transform:translate(36px,12px) scale(1.12)}
+  26.429%{transform:translate(36px,12px) scale(1)}
+  27.857%{transform:translate(36px,12px) scale(1.06)}
+  29.286%{transform:translate(36px,12px) scale(1)}
+  30.714%{transform:translate(36px,12px) scale(1.06)}
+  32.5%{opacity:1;transform:translate(36px,12px) scale(1)}
+  33.571%,100%{opacity:0;transform:translate(36px,12px) scale(.8)}
+}
+@keyframes ts{
+  0%,24.143%{opacity:0;transform:translate(180px,113px)}
+  24.286%{opacity:1;transform:translate(180px,113px)}
+  25.571%{transform:translate(180px,70px) rotate(-5deg);animation-timing-function:ease-in}
+  27%{transform:translate(180px,113px) rotate(0)}
+  27.714%{transform:translate(180px,113px) rotate(3deg)}
+  28.429%{transform:translate(180px,113px) rotate(-3deg)}
+  29.143%{transform:translate(180px,113px) rotate(3deg)}
+  29.857%{transform:translate(180px,113px) rotate(-3deg)}
+  30.571%{transform:translate(180px,113px) rotate(3deg)}
+  31.286%{transform:translate(180px,113px) rotate(-3deg)}
+  32.143%{opacity:1;transform:translate(180px,113px) rotate(0)}
+  32.286%,100%{opacity:0;transform:translate(180px,113px)}
+}
+@keyframes tf{
+  0%,32.143%{opacity:0;transform:translate(186px,134px)}
+  32.286%{opacity:1;transform:translate(186px,134px)}
+  33.571%{transform:translate(170px,134px) scaleX(.94);animation-timing-function:cubic-bezier(.5,0,.9,.5)}
+  37.857%{opacity:1;transform:translate(440px,134px)}
+  38%,100%{opacity:0;transform:translate(440px,134px)}
+}
+/* 3) Jerry sale con el queso y le aparece la velita del 6 */
+@keyframes jq{
+  0%,39.286%{opacity:0;transform:translate(261px,107px) scale(.3)}
+  39.429%{opacity:1;transform:translate(261px,107px) scale(.3)}
+  41.857%{transform:translate(236px,141px) scale(1.06);animation-timing-function:ease-out}
+  42.714%{transform:translate(236px,141px) scale(1)}
+  50.714%{transform:translate(150px,141px) scale(1)}
+  53.714%{transform:translate(150px,141px)}
+  54.571%{transform:translate(150px,127px);animation-timing-function:ease-in}
+  55.429%{transform:translate(150px,141px)}
+  64.857%{opacity:1;transform:translate(150px,141px)}
+  65.143%,100%{opacity:0;transform:translate(150px,141px)}
+}
+@keyframes vela{
+  0%,51.429%{opacity:0;transform:scale(0)}
+  51.571%{opacity:1;transform:scale(.2)}
+  52.429%{transform:scale(1.2,1.3)}
+  53.143%{transform:scale(.92,.95)}
+  53.714%{transform:scale(1)}
+  64.857%{opacity:1;transform:scale(1)}
+  65.143%,100%{opacity:0;transform:scale(0)}
+}
+@keyframes chispa{
+  0%,53.286%{opacity:0;transform:scale(.2) rotate(0)}
+  53.857%{opacity:1;transform:scale(1.2) rotate(45deg)}
+  55.286%{opacity:1;transform:scale(.8) rotate(90deg)}
+  56.143%,100%{opacity:0;transform:scale(.2) rotate(120deg)}
+}
+/* 4) Tom vuelve a la carga… ¡nube de pelea! */
+@keyframes excl{
+  0%,60.714%{opacity:0;transform:scale(.2)}
+  61.286%{opacity:1;transform:scale(1.3) translateY(-4px)}
+  61.857%{transform:scale(1)}
+  64.571%{opacity:1;transform:scale(1)}
+  64.857%,100%{opacity:0;transform:scale(.2)}
+}
+@keyframes tc{
+  0%,59.714%{opacity:0;transform:translate(400px,134px)}
+  59.857%{opacity:1;transform:translate(400px,134px)}
+  64.714%{opacity:1;transform:translate(212px,134px)}
+  65%,100%{opacity:0;transform:translate(212px,134px)}
+}
+@keyframes nube{
+  0%,64.143%{opacity:0;transform:translate(112px,104px) scale(.3)}
+  64.286%{opacity:1;transform:translate(112px,104px) scale(.5)}
+  65.286%{transform:translate(112px,104px) scale(1.12)}
+  66%{transform:translate(112px,104px) scale(1)}
+  70.429%{opacity:1;transform:translate(112px,104px) scale(1.04)}
+  71.857%{opacity:0;transform:translate(112px,104px) scale(1.5)}
+  72%,100%{opacity:0;transform:translate(112px,104px) scale(.3)}
+}
+/* 5) final feliz: Tom y Jerry juntos, torta de queso con el 6 y confeti */
+@keyframes juntos{
+  0%,71%{opacity:0;transform:translate(70px,272px)}
+  71.143%{opacity:1;transform:translate(70px,272px);animation-timing-function:cubic-bezier(.2,.7,.3,1)}
+  73.571%{transform:translate(70px,74px)}
+  74.429%{transform:translate(70px,85px)}
+  75.143%{transform:translate(70px,82px)}
+  97.143%{opacity:1;transform:translate(70px,82px)}
+  97.286%,100%{opacity:0;transform:translate(70px,272px)}
+}
+@keyframes torta{
+  0%,71.429%{opacity:0;transform:translate(292px,166px) scale(.3)}
+  71.571%{opacity:1;transform:translate(292px,166px) scale(.4)}
+  72.714%{transform:translate(292px,166px) scale(1.14,1.08)}
+  73.571%{transform:translate(292px,166px) scale(.96,1.02)}
+  74.286%{transform:translate(292px,166px) scale(1)}
+  97.143%{opacity:1;transform:translate(292px,166px) scale(1)}
+  97.286%,100%{opacity:0;transform:translate(292px,166px) scale(.3)}
+}
+@keyframes feliz{
+  0%,73.857%{opacity:0;transform:translate(8px,34px) scale(.3) rotate(-14deg)}
+  74.714%{opacity:1;transform:translate(8px,34px) scale(1.15) rotate(-5deg)}
+  75.571%{transform:translate(8px,34px) scale(1) rotate(-7deg)}
+  80.714%{transform:translate(8px,34px) scale(1.06) rotate(-5deg)}
+  85.714%{transform:translate(8px,34px) scale(1) rotate(-7deg)}
+  90.714%{transform:translate(8px,34px) scale(1.06) rotate(-5deg)}
+  97.143%{opacity:1;transform:translate(8px,34px) scale(1) rotate(-7deg)}
+  97.286%,100%{opacity:0;transform:translate(8px,34px) scale(.3)}
+}
+@keyframes cf{
+  0%,72.857%{opacity:0;transform:translate(var(--x),-16px) rotate(0)}
+  73%{opacity:1;transform:translate(var(--x),-16px) rotate(0)}
+  80.714%{transform:translate(calc(var(--x) + var(--d)),96px) rotate(calc(var(--r) * .45))}
+  87.857%{transform:translate(calc(var(--x) - var(--d)),196px) rotate(calc(var(--r) * .8))}
+  92.143%{opacity:1;transform:translate(var(--x),262px) rotate(var(--r))}
+  92.286%,100%{opacity:0;transform:translate(var(--x),262px)}
+}
+
+/* ================= ESCENAS AL BAJAR ================= */
+/* 1) Jerry cruza la pantalla y Tom lo persigue (capa fija, no se puede tocar).
+   Cruzan por una franja sin textos, campos ni botones: el director le pone «top», alto y escala (--pe) al arrancar
+   (ver buscarCarril). Entre los textos de la tarjeta no hay 118 px libres: corren un poco más chicos (hasta 0,6).
+   Terminan bien afuera (rayitas incluidas) y al final la capa se oculta sola (ver el director de escenas) */
+.pasada{position:fixed;left:0;right:0;bottom:calc(6px + env(safe-area-inset-bottom));height:118px;z-index:40;pointer-events:none;overflow:hidden;visibility:hidden}
+.pasada.play{visibility:visible}
+/* al arrancar la franja se pega a la página (no a la pantalla): si se sigue bajando, se va junto con el hueco entre
+   los textos donde corren, y nunca queda encima de uno */
+.pasada.pegada{position:absolute;bottom:auto}
+.p-actor{position:absolute;left:0;bottom:4px;transform:translateX(-220px);will-change:transform}
+.p-actor img{width:100%;height:auto}
+.p-jerry{width:calc(98px * var(--pe,1))}
+.p-jerry .sombra{bottom:-5px;left:25%}
+.p-tom{width:calc(176px * var(--pe,1));bottom:calc(10px * var(--pe,1))}
+.p-tom .sombra{bottom:calc(-12px * var(--pe,1));left:14%;right:14%}
+.pasada.play .p-jerry{animation:pasoJ var(--dj,1.3s) linear both}
+.pasada.play .p-tom{animation:pasoT var(--dt,1.45s) calc(var(--dj,1.3s) * .3) linear both}
+.pasada.play .p-jerry .bob{animation:trote .2s ease-in-out infinite alternate}
+.pasada.play .p-tom .bob{animation:salto .3s ease-in-out infinite alternate}
+@keyframes salto{from{transform:translateY(0) rotate(2deg)}to{transform:translateY(-12px) rotate(-3deg)}}
+@keyframes pasoJ{from{transform:translateX(-120px)}to{transform:translateX(calc(100vw + 60px))}}
+@keyframes pasoT{from{transform:translateX(-190px)}to{transform:translateX(calc(100vw + 70px))}}
+
+/* ================= FORMULARIO ================= */
+.bloque{padding:30px 16px 0;position:relative}
+.papel{background:var(--papel)}
+.papel::before{content:"";position:absolute;inset:0;background:var(--grano);opacity:.12;pointer-events:none}
+.form{position:relative;background:#fffaf0;border:3px solid var(--tinta);border-radius:20px;box-shadow:0 7px 0 var(--tinta);overflow:hidden}
+.form-cab{position:relative;text-align:center;padding:18px 16px 18px;color:var(--crema);border-bottom:3px solid var(--tinta);
+  background:repeating-linear-gradient(90deg,var(--rojo) 0 18px,var(--rojo-2) 18px 36px)}
+.kicker{font-weight:900;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--crema);opacity:.95}
+.form-cab h2{font-family:'Luckiest Guy',Impact,sans-serif;font-weight:400;font-size:33px;line-height:1;margin-top:6px;color:var(--queso);letter-spacing:.5px;
+  -webkit-text-stroke:2px var(--tinta);paint-order:stroke fill;text-shadow:0 3px 0 var(--tinta)}
+.plazo{display:inline-block;margin-top:10px;background:var(--crema);color:var(--tinta);font-weight:900;font-size:13.5px;
+  padding:6px 13px;border-radius:30px;border:2.5px solid var(--tinta)}
+.form-cuerpo{padding:20px 16px 22px}
+.campo+.campo{margin-top:20px}
+.etq{display:block;font-weight:900;font-size:16px;margin-bottom:8px}
+.ayuda{font-size:13px;color:var(--gris);font-weight:700;margin-top:7px}
+input[type=text],textarea{width:100%;font:inherit;font-size:17px;font-weight:800;color:var(--tinta);background:var(--crema);
+  border:2.5px solid var(--tinta);border-radius:14px;padding:13px 14px;outline:none;transition:box-shadow .15s;-webkit-appearance:none;appearance:none}
+textarea{resize:vertical;min-height:70px}
+input::placeholder,textarea::placeholder{color:#a58d6c;font-weight:700}
+input:focus,textarea:focus{box-shadow:0 0 0 4px rgba(248,201,69,.8)}
+.opciones{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.op{position:relative;min-height:56px;font:inherit;font-size:17px;font-weight:900;color:var(--tinta);background:#fff;border:3px solid var(--tinta);
+  border-radius:15px;padding:12px 6px;box-shadow:0 5px 0 var(--tinta);cursor:pointer;transition:transform .08s,box-shadow .08s,background .15s,opacity .15s;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.op:active{transform:translateY(3px);box-shadow:0 2px 0 var(--tinta)}
+.op[aria-pressed=true]{transform:translateY(5px);box-shadow:inset 0 3px 0 rgba(0,0,0,.25);animation:pop .28s ease}
+.op[aria-pressed=true].si{background:var(--rojo);color:#fff}
+.op[aria-pressed=true].no{background:var(--azul);color:#fff}
+.op[aria-pressed=true]::before{content:"✓";display:inline-grid;place-items:center;width:22px;height:22px;margin-right:7px;border-radius:50%;
+  background:#fff;color:var(--tinta);font-size:14px;line-height:1;vertical-align:2px}
+.opciones:has(.op[aria-pressed=true]) .op[aria-pressed=false]{background:#efe5d2;color:#9a8870;border-color:#bfae93;box-shadow:0 5px 0 #bfae93}
+@keyframes pop{0%{scale:1}45%{scale:1.05}100%{scale:1}}
+.cuantos{display:grid;gap:10px}
+.cont{display:flex;align-items:center;justify-content:space-between;background:var(--crema);border:2.5px solid var(--tinta);
+  border-radius:14px;padding:7px 8px 7px 14px}
+.cont .nom{font-weight:900;font-size:17px}
+.cont .ctl{display:flex;align-items:center;gap:6px}
+.cont button{width:46px;height:46px;border-radius:50%;border:2.5px solid var(--tinta);background:var(--queso);
+  font:900 24px/1 Nunito,sans-serif;color:var(--tinta);cursor:pointer;box-shadow:0 3px 0 var(--tinta);touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.cont button:active{transform:translateY(2px);box-shadow:0 1px 0 var(--tinta)}
+.cont output{min-width:38px;text-align:center;font-family:'Luckiest Guy',Impact,sans-serif;font-size:28px;padding-top:4px}
+.enviar{width:100%;min-height:58px;margin-top:24px;font-family:'Luckiest Guy',Impact,sans-serif;font-size:23px;letter-spacing:1px;color:var(--crema);
+  background:var(--rojo);border:3px solid var(--tinta);border-radius:16px;padding:15px 12px 11px;box-shadow:0 6px 0 var(--tinta);cursor:pointer;touch-action:manipulation}
+.enviar:active{transform:translateY(4px);box-shadow:0 2px 0 var(--tinta)}
+.enviar:disabled{opacity:.7}
+.oculto{display:none !important}
+.error{margin-top:16px;background:#fde3df;border:2.5px solid var(--rojo);color:var(--rojo-osc);font-weight:800;font-size:15px;border-radius:12px;padding:11px 13px}
+input.mal{border-color:var(--rojo);box-shadow:0 0 0 4px rgba(193,49,42,.25)}
+.gracias{padding:18px 18px 20px;text-align:center}
+.gracias h3{font-family:'Luckiest Guy',Impact,sans-serif;font-weight:400;font-size:30px;line-height:1.05;color:var(--rojo);margin-top:6px;
+  -webkit-text-stroke:1.5px var(--tinta);paint-order:stroke fill;text-shadow:0 2px 0 var(--tinta)}
+.gracias p{font-weight:800;font-size:16px;margin-top:8px;line-height:1.35}
+.otra{margin-top:14px;min-height:44px;padding:0 12px;background:none;border:0;font:900 15px Nunito,sans-serif;color:var(--azul);text-decoration:underline;text-underline-offset:3px;cursor:pointer;
+  animation:otraEspera .7s both}
+/* «Mandar otra» aparece a los 0,7 s: un doble toque apurado en «Enviar» no cae sobre ella */
+@keyframes otraEspera{0%,99%{visibility:hidden}100%{visibility:visible}}
+/* 4) cierre al confirmar: con «Sí» Tom y Jerry festejan con confeti */
+.festejo{position:relative;height:160px;margin:0 auto}
+.festejo::before{content:"";position:absolute;left:50%;top:10px;width:150px;height:150px;margin-left:-75px;border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,var(--queso) 0 10deg,#f3b935 10deg 20deg);box-shadow:0 0 0 3px var(--tinta)}
+.fest-tj{position:absolute;left:50%;bottom:0;width:94px;margin-left:-47px;transform-origin:50% 100%}
+.fest-tj img{width:100%;height:auto}
+.fest-tj .sombra{bottom:-3px;left:14%;right:14%}
+.fc{position:absolute;left:50%;top:58%;width:8px;height:12px;margin:-6px 0 0 -4px;border-radius:1.5px;background:var(--c);
+  box-shadow:inset 0 0 0 1.2px rgba(38,22,15,.55);opacity:0}
+.festejo.play .fest-tj{animation:festTJ 1.9s both}
+.festejo.play .fc{animation:festCF 1.7s .1s cubic-bezier(.2,.7,.4,1) both}
+/* arrancan chiquitos desde el piso del festejo (no desde más abajo: así no pasan por encima del título) */
+@keyframes festTJ{
+  0%{transform:translateY(4px) scale(.4);opacity:0}
+  16%{transform:translateY(-6px) scale(1.1,1.12);opacity:1}
+  24%{transform:scale(1.06,.92)}
+  31%{transform:none}
+  42%{transform:translateY(-16px) rotate(-3deg);animation-timing-function:ease-in}
+  52%{transform:translateY(0) scale(1.05,.95)}
+  58%{transform:none}
+  68%{transform:translateY(-9px) rotate(3deg);animation-timing-function:ease-in}
+  77%{transform:translateY(0) scale(1.03,.97)}
+  84%,100%{transform:none;opacity:1}
+}
+@keyframes festCF{
+  0%{opacity:1;transform:translate(0,0) scale(.3) rotate(0)}
+  34%{opacity:1;transform:translate(var(--x),var(--y)) scale(1) rotate(calc(var(--r) * .5))}
+  100%{opacity:0;transform:translate(calc(var(--x) * 1.25),calc(var(--y) + 120px)) rotate(var(--r))}
+}
+/* con «No podemos»: sin confeti, Jerry saluda y dice «¡Otra vez será!» */
+.fest-chau,.globo{display:none}
+.festejo.no .fest-tj,.festejo.no .fc{display:none}
+.festejo.no .fest-chau,.festejo.no .globo{display:block}
+.festejo.no::before{background:repeating-conic-gradient(from 0deg,#dde5f1 0 10deg,#cbd7ea 10deg 20deg)}
+.fest-chau{position:absolute;left:50%;bottom:0;width:124px;margin-left:-86px;transform-origin:45% 100%}
+.fest-chau img{width:100%;height:auto}
+.fest-chau .sombra{bottom:-3px;left:18%;right:22%}
+.globo{position:absolute;left:50%;top:-8px;width:118px;margin-left:22px;transform-origin:15% 86%}
+.globo svg{display:block;width:100%;height:auto}
+.festejo.play .fest-chau{animation:chau 2.3s both}
+.festejo.play .globo{animation:globo 2.3s both}
+@keyframes chau{
+  0%{transform:translateY(4px) scale(.5);opacity:0}
+  14%{transform:translateY(-5px) scale(1.05,1.07);opacity:1}
+  22%{transform:none}
+  32%{transform:rotate(-5deg)}
+  44%{transform:rotate(4deg)}
+  56%{transform:rotate(-5deg)}
+  68%{transform:rotate(4deg)}
+  80%,100%{transform:none;opacity:1}
+}
+@keyframes globo{
+  0%,20%{opacity:0;transform:scale(.3)}
+  29%{opacity:1;transform:scale(1.1) rotate(-4deg)}
+  37%,100%{opacity:1;transform:none}
+}
+
+/* ================= DATOS (entrada de cine) ================= */
+.bloque.datos{padding-top:52px}
+.boleto{position:relative}
+.entrada{position:relative;z-index:1;display:grid;grid-template-columns:100px 1fr;background:var(--queso);border:3px solid var(--tinta);border-radius:18px;
+  box-shadow:0 7px 0 var(--tinta)}
+.entrada::before,.entrada::after{content:"";position:absolute;left:88px;width:24px;height:24px;border-radius:50%;background:var(--papel);border:3px solid var(--tinta)}
+.entrada::before{top:-14px;clip-path:inset(50% 0 0 0)}
+.entrada::after{bottom:-14px;clip-path:inset(0 0 50% 0)}
+.talon{background:var(--rojo);color:var(--crema);text-align:center;padding:18px 4px;border-right:3px dashed var(--tinta);
+  border-radius:15px 0 0 15px;display:flex;flex-direction:column;justify-content:center}
+.talon .sem{font-weight:900;font-size:12.5px;letter-spacing:2px;text-transform:uppercase}
+.talon .num{font-family:'Luckiest Guy',Impact,sans-serif;font-size:60px;line-height:1;margin-top:6px;color:var(--queso);
+  -webkit-text-stroke:2px var(--tinta);paint-order:stroke fill;text-shadow:0 3px 0 var(--tinta)}
+.talon .mes{font-family:'Luckiest Guy',Impact,sans-serif;font-size:17px;letter-spacing:1px;margin-top:2px}
+.info{padding:14px 14px 16px 16px;display:grid;gap:11px}
+.adm{font-weight:900;font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rojo-osc);border-bottom:2px solid rgba(38,22,15,.25);padding-bottom:7px}
+.fila b{display:block;font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--rojo-osc)}
+.fila p{font-size:18px;font-weight:900;line-height:1.2}
+.fila p span{display:block;font-size:14.5px;font-weight:800;margin-top:2px}
+.mapa{display:flex;align-items:center;justify-content:center;gap:9px;min-height:56px;margin-top:18px;text-decoration:none;
+  font-family:'Luckiest Guy',Impact,sans-serif;font-size:21px;letter-spacing:1px;padding-top:4px;color:var(--crema);background:var(--azul);border:3px solid var(--tinta);border-radius:16px;
+  box-shadow:0 6px 0 var(--tinta)}
+.mapa svg{width:22px;height:22px;margin-top:-4px;flex:none}
+.mapa:active{transform:translateY(4px);box-shadow:0 2px 0 var(--tinta)}
+/* 2) Tom espía por encima de la entrada */
+.espia{position:absolute;right:34px;top:-46px;width:88px;height:46px;z-index:0;pointer-events:none}
+.espia-cab{position:absolute;left:0;top:0;width:88px;transform:translateY(50px);transform-origin:50% 100%;will-change:transform}
+.espia-cab img{width:100%;height:auto}
+.espia-sig{position:absolute;left:-24px;top:2px;width:24px;opacity:0;transform-origin:50% 100%}
+.espia-sig svg{display:block;width:100%;height:auto}
+.espia.play .espia-cab{animation:espiar 2.9s both}
+.espia.play .espia-sig{animation:espiaSig 2.9s both}
+@keyframes espiar{
+  0%{transform:translate(0,50px) rotate(0) scaleX(1)}
+  14%{transform:translate(0,16px) rotate(0) scaleX(1);animation-timing-function:ease-out}
+  22%{transform:translate(0,12px) rotate(0) scaleX(1)}
+  30%{transform:translate(0,2px) rotate(0) scaleX(1);animation-timing-function:ease-in-out}
+  40%,50%{transform:translate(-9px,2px) rotate(-9deg) scaleX(1)}
+  53%{transform:translate(0,2px) rotate(0) scaleX(.15)}
+  56%,68%{transform:translate(9px,2px) rotate(9deg) scaleX(-1)}
+  74%{transform:translate(0,0) rotate(0) scaleX(-1)}
+  84%{transform:translate(0,0) rotate(0) scaleX(-1);animation-timing-function:cubic-bezier(.6,0,.9,.4)}
+  90%,100%{transform:translate(0,54px) rotate(0) scaleX(-1)}
+}
+@keyframes espiaSig{
+  0%,58%{opacity:0;transform:scale(.3)}
+  63%{opacity:1;transform:scale(1.2) rotate(-8deg)}
+  68%{transform:scale(1) rotate(-4deg)}
+  82%{opacity:1;transform:scale(1) rotate(4deg)}
+  86%,100%{opacity:0;transform:scale(.4)}
+}
+
+/* ================= CIERRE ================= */
+.cierre{position:relative;margin-top:40px;padding:34px 16px 40px;text-align:center;background:#140b08;color:var(--crema);overflow:hidden}
+.cierre::after{content:"";position:absolute;inset:0;background:var(--grano);opacity:.35;pointer-events:none}
+.fin-escena{position:relative;width:250px;height:250px;margin:0 auto}
+.iris-fin{position:relative;width:250px;height:250px;border-radius:50%;overflow:hidden;border:4px solid var(--tinta);
+  background:repeating-conic-gradient(from 0deg at 50% 60%,var(--queso) 0 8deg,#f3b935 8deg 16deg);box-shadow:0 0 0 6px rgba(248,201,69,.18),0 0 60px rgba(248,201,69,.25)}
+.iris-fin::after{content:"";position:absolute;left:30px;right:30px;bottom:6px;height:14px;border-radius:50%;background:rgba(90,40,5,.25)}
+/* 3) Jerry comiendo el queso */
+.come{position:absolute;left:28px;bottom:12px;width:180px;transform-origin:45% 100%;z-index:1}
+.come img{width:100%;height:auto}
+.migas i{position:absolute;left:116px;top:140px;width:12px;height:10px;z-index:2;opacity:0;background:#fff3c4;border:2px solid var(--tinta);border-radius:3px 6px 4px 5px}
+.migas i:nth-child(2n){width:9px;height:8px;border-radius:5px 2px 5px 2px;background:#ffe27d}
+.nam{position:absolute;right:-26px;top:-6px;width:104px;z-index:3;opacity:0;transform-origin:10% 90%}
+.nam svg{display:block;width:100%;height:auto}
+.fin-escena.play .come{animation:morder 2.8s both}
+.fin-escena.play .nam{animation:nam 2.8s both}
+.fin-escena.play .migas i{animation:miga .9s cubic-bezier(.3,0,.8,.6) forwards}
+.migas i:nth-child(1){--dx:-18px;--r:-160deg;animation-delay:.2s !important}
+.migas i:nth-child(2){--dx:10px;--r:200deg;animation-delay:.26s !important}
+.migas i:nth-child(3){--dx:-8px;--r:220deg;animation-delay:1.1s !important}
+.migas i:nth-child(4){--dx:22px;--r:-180deg;animation-delay:1.16s !important}
+.migas i:nth-child(5){--dx:-26px;--r:160deg;animation-delay:1.98s !important}
+.migas i:nth-child(6){--dx:14px;--r:-240deg;animation-delay:2.04s !important}
+@keyframes morder{
+  0%,4%{transform:none}
+  9%{transform:scale(1.03,.94) rotate(-3deg)}
+  15%{transform:scale(.98,1.05) translateY(-8px) rotate(1deg);animation-timing-function:ease-in}
+  21%,33%{transform:none}
+  38%{transform:scale(1.03,.94) rotate(-3deg)}
+  44%{transform:scale(.98,1.05) translateY(-8px) rotate(1deg);animation-timing-function:ease-in}
+  50%,62%{transform:none}
+  67%{transform:scale(1.03,.94) rotate(-3deg)}
+  73%{transform:scale(.98,1.05) translateY(-8px) rotate(1deg);animation-timing-function:ease-in}
+  79%,100%{transform:none}
+}
+@keyframes nam{
+  0%,8%{opacity:0;transform:scale(.3) rotate(-12deg)}
+  14%{opacity:1;transform:scale(1.15) rotate(4deg)}
+  20%{transform:scale(1) rotate(0)}
+  37%{transform:scale(1)}
+  42%{transform:scale(1.12) rotate(-4deg)}
+  48%{transform:scale(1) rotate(0)}
+  66%{transform:scale(1)}
+  71%{transform:scale(1.12) rotate(4deg)}
+  77%{transform:scale(1) rotate(0)}
+  92%{opacity:1;transform:scale(1)}
+  100%{opacity:0;transform:scale(.85)}
+}
+@keyframes miga{
+  0%{opacity:1;transform:translate(0,0) rotate(0)}
+  80%{opacity:1}
+  100%{opacity:0;transform:translate(var(--dx),78px) rotate(var(--r))}
+}
+.fin-tit{position:relative;z-index:1;font-family:Shrikhand,Georgia,serif;font-size:40px;line-height:1.05;margin-top:18px;color:var(--queso);
+  text-shadow:0 3px 0 var(--rojo),0 6px 0 rgba(0,0,0,.5);transform:rotate(-3deg)}
+.fin-sub{position:relative;z-index:1;margin-top:12px;font-weight:900;font-size:12px;letter-spacing:clamp(2px,calc((100vw - 300px) / 30),3px);text-transform:uppercase;color:var(--crema);opacity:.85}
+/* en una línea desde 360 px; más angosto corta entre «6 años» y «viernes», nunca deja una palabra sola */
+.fin-sub span{white-space:nowrap}
+
+/* ================= ENTRADA: TELÓN CERRADO =================
+   Tapa toda la pantalla hasta el primer toque (botón, cualquier parte del telón o una tecla). Todo se mueve con
+   transform/opacity. Ritmo común: Jerry, su globito y el empujoncito del ▶ comparten un ciclo de 3,3 s (arranca a los 1,4 s,
+   cuando Jerry terminó de entrar); las ondas del botón salen cada 1,5 s y el brillo cruza cada 2,5 s */
+.portada{display:none}
+html.cerrado .portada,html.abriendo .portada{display:block}
+html.cerrado,html.cerrado body{overflow:hidden}
+.portada{position:fixed;top:0;right:0;bottom:0;left:0;z-index:200;overflow:hidden;cursor:pointer;touch-action:none;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;
+  --jw:clamp(142px,46vw,184px)}
+/* el terciopelo y los flecos de la tarjeta, en grande */
+.pt-tela{position:absolute;top:0;bottom:0;width:calc(50% + 2px);will-change:transform;
+  background:
+    linear-gradient(0deg,#e0a92e 0 9px,var(--tinta) 9px 12px,transparent 12px),
+    linear-gradient(rgba(20,2,0,.5),transparent 25%,transparent 70%,rgba(20,2,0,.6)),
+    repeating-linear-gradient(90deg,#5e100c 0,#9e2219 10px,#cf4636 18px,#a3241b 26px,#5e100c 36px)}
+.pt-tela.i{left:0;transform-origin:0 50%;box-shadow:inset -5px 0 0 rgba(20,2,0,.45),inset -14px 0 18px -8px rgba(20,2,0,.5)}
+.pt-tela.d{right:0;transform-origin:100% 50%;background-position:0 0,0 0,right 0 top 0;box-shadow:inset 5px 0 0 rgba(20,2,0,.45),inset 14px 0 18px -8px rgba(20,2,0,.5)}
+.pt-bambalina{position:absolute;left:0;right:0;top:0;height:62px;z-index:2;will-change:transform;
+  background:radial-gradient(ellipse at 50% 0,#f2c04e 0,#e0a92e 26%,#cf931f 39%,transparent 40.5%) 50% 0/78px 62px repeat-x;
+  filter:drop-shadow(0 4px 0 var(--tinta))}
+/* columna del medio: en computadora queda del ancho de la tarjeta */
+.pt-col{position:absolute;top:0;bottom:0;left:50%;width:min(100%,460px);margin-left:max(-50%,-230px);z-index:3}
+.pt-cab{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top) + 82px);padding:0 10px;text-align:center;pointer-events:none}
+.pt-sub{font-weight:900;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--queso);text-shadow:0 2px 0 rgba(38,22,15,.6)}
+.pt-tit{margin-top:8px;font-family:Shrikhand,Georgia,serif;font-size:clamp(27px,9vw,46px);line-height:1.1;color:var(--crema);white-space:nowrap;
+  text-shadow:0 3px 0 var(--tinta),3px 3px 0 var(--tinta),-2px 3px 0 var(--tinta),0 7px 0 rgba(38,22,15,.35),0 0 22px rgba(0,0,0,.45)}
+/* el botón: centro visual de la pantalla, nunca pegado al título */
+.pt-centro{position:absolute;left:50%;top:max(48%,calc(env(safe-area-inset-top) + 262px));width:170px;height:170px;margin:-85px 0 0 -85px}
+.pt-halo{position:absolute;left:-46px;top:-46px;right:-46px;bottom:-46px;border-radius:50%;pointer-events:none;opacity:.6;
+  background:radial-gradient(circle,rgba(255,214,90,.5) 0,rgba(255,214,90,.2) 45%,rgba(255,214,90,0) 70%)}
+.pt-onda{position:absolute;top:0;left:0;width:170px;height:170px;border-radius:50%;border:4px solid rgba(248,201,69,.55);pointer-events:none;
+  transform:scale(1.36)}
+.pt-onda.o2{transform:scale(1.77);border-color:rgba(248,201,69,.25)}
+.pt-boton{position:absolute;top:0;left:0;width:170px;height:170px;padding:0;border-radius:50%;cursor:pointer;color:inherit;font:inherit;
+  display:grid;place-items:center;border:6px solid var(--tinta);
+  background:radial-gradient(circle at 35% 30%,#ffe58a,var(--queso) 45%,var(--queso-2));
+  box-shadow:0 8px 0 var(--tinta),0 0 36px rgba(248,201,69,.62);
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:transform .09s ease-out,box-shadow .09s ease-out,filter .2s}
+.pt-boton:focus-visible{outline:4px solid var(--crema);outline-offset:8px}
+.pt-cara{position:absolute;top:0;left:0;right:0;bottom:0;border-radius:50%;overflow:hidden;clip-path:circle(50%);pointer-events:none}
+.pt-anillo{position:absolute;top:10px;left:10px;right:10px;bottom:10px;border-radius:50%;border:3px dashed rgba(38,22,15,.36)}
+.pt-brillo{position:absolute;top:-12%;bottom:-12%;left:0;width:44%;opacity:0;
+  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.72) 50%,rgba(255,255,255,0));transform:translateX(-170%) skewX(-18deg)}
+.pt-play{position:relative;width:64px;height:70px;margin-left:12px;overflow:visible;pointer-events:none}
+@media (hover:hover){.pt-boton:hover{filter:brightness(1.07) saturate(1.06);box-shadow:0 8px 0 var(--tinta),0 0 56px rgba(255,214,90,.95)}}
+.pt-boton.apretado{transform:translateY(4px);filter:brightness(1.07);box-shadow:0 4px 0 var(--tinta),0 0 52px rgba(255,214,90,.95)}
+.pt-boton.hundido{transform:translateY(7px);filter:brightness(1.1);box-shadow:0 1px 0 var(--tinta),0 0 60px rgba(255,214,90,1)}
+/* Jerry abajo a la derecha, señalando el botón, con su globito */
+.pt-jerry{position:absolute;right:-16px;bottom:calc(env(safe-area-inset-bottom) + 20px);width:var(--jw);height:calc(var(--jw) * .9462);pointer-events:none}
+.j-entra,.j-vaiven,.j-accion,.j-fig{position:absolute;top:0;left:0;width:100%;height:100%;transform-origin:50% 100%}
+.j-fig{transform:scaleX(-1);filter:drop-shadow(0 6px 8px rgba(0,0,0,.4))}
+.j-fig i{position:absolute;top:0;left:0;width:100%;height:100%;background:url(img/jerry_titere.webp) no-repeat 0 0/201.54% 100%}
+.j-fig .j-cabeza{background-position:100% 0;transform-origin:57.7% 47.2%} /* cabeza + brazo levantado giran desde el cuello */
+.pt-globo{position:absolute;right:calc(100% - 4px);bottom:calc(var(--jw) * .47);white-space:nowrap;
+  background:#fff;border:3px solid var(--tinta);border-radius:18px;padding:9px 15px 8px;box-shadow:0 3px 0 var(--tinta);
+  font:900 clamp(17px,5.3vw,20px)/1.15 Nunito,system-ui,sans-serif;color:var(--tinta);transform-origin:100% 75%}
+.pt-globo::before,.pt-globo::after{content:"";position:absolute;top:auto;width:0;height:0;border-style:solid;border-color:transparent}
+.pt-globo::before{right:-17px;bottom:9px;border-width:10px 0 10px 17px;border-left-color:var(--tinta)}
+.pt-globo::after{right:-10px;bottom:13px;border-width:6px 0 6px 11px;border-left-color:#fff}
+.pt-globo b{display:inline-block;font-weight:900}
+
+/* --- vida (solo si se permite movimiento) --- */
+html.mov .pt-halo{animation:ptHalo 1.5s ease-in-out infinite}
+@keyframes ptHalo{0%,100%{opacity:.45}50%{opacity:1}}
+html.mov .pt-onda,html.mov .pt-onda.o2{opacity:0;border-color:rgba(248,201,69,.8);animation:ptOnda 3s cubic-bezier(.25,.6,.45,1) infinite}
+html.mov .pt-onda.o2{animation-delay:1.5s}
+@keyframes ptOnda{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+html.mov .pt-anillo{animation:giro 16s linear infinite}
+html.mov .pt-brillo{animation:ptBrillo 2.5s .8s ease-in-out infinite}
+@keyframes ptBrillo{0%{transform:translateX(-170%) skewX(-18deg);opacity:0}4%{opacity:1}36%{opacity:1}40%,100%{transform:translateX(340%) skewX(-18deg);opacity:0}}
+html.mov .pt-play{animation:ptDale 3.3s 1.4s infinite}
+@keyframes ptDale{
+  0%,8%{transform:none}
+  12%{transform:translateX(-3px) scaleX(.92)}
+  17%{transform:translateX(9px) scaleX(1.08)}
+  22%{transform:translateX(-2px) scaleX(.98)}
+  26%{transform:translateX(2px)}
+  30%,100%{transform:none}
+}
+/* entra asomándose desde el costado y salta adentro */
+html.mov .j-entra{animation:jEntra 1.25s .2s both}
+@keyframes jEntra{
+  0%{transform:translateX(125%)}
+  26%{transform:translateX(60%) rotate(-11deg);animation-timing-function:ease-out}
+  34%{transform:translateX(63%) rotate(-8deg)}
+  50%{transform:translateX(60%) rotate(-11deg)}
+  60%{transform:translateX(60%) scale(1.05,.93);animation-timing-function:ease-out}
+  78%{transform:translateX(-3%) translateY(-24px) rotate(4deg) scale(.97,1.04);animation-timing-function:ease-in}
+  88%{transform:translateY(0) scale(1.07,.91)}
+  95%{transform:scale(.98,1.03)}
+  100%{transform:none}
+}
+/* se balancea siempre, despacito */
+html.mov .j-vaiven{animation:jVaiven 2.6s ease-in-out infinite alternate}
+@keyframes jVaiven{from{transform:rotate(-1.6deg)}to{transform:rotate(1.6deg) translateY(-1px)}}
+/* «¡Tocá el botón!»: se inclina hacia el botón insistiendo, dos saltitos de entusiasmo y se ríe */
+html.mov .j-accion{animation:jAccion 3.3s 1.4s infinite}
+@keyframes jAccion{
+  0%,2%{transform:none}
+  6%{transform:scale(1.05,.94)}
+  11%{transform:translate(-7px,-3px) rotate(-8deg) scale(.98,1.04)}
+  16%{transform:translate(-5px,-1px) rotate(-5.5deg)}
+  21%{transform:translate(-7px,-2px) rotate(-8deg)}
+  26%{transform:translate(-5px,-1px) rotate(-5.5deg)}
+  31%{transform:translate(-2px,0) rotate(-2deg)}
+  36%{transform:none;animation-timing-function:ease-out}
+  40%{transform:scale(1.05,.93);animation-timing-function:ease-out}
+  46%{transform:translateY(-18px) scale(.97,1.05);animation-timing-function:ease-in}
+  51%{transform:scale(1.07,.91)}
+  54%{transform:none;animation-timing-function:ease-out}
+  58.5%{transform:translateY(-10px) scale(.98,1.03);animation-timing-function:ease-in}
+  63%{transform:scale(1.04,.95)}
+  66%{transform:none}
+  69%{transform:rotate(2.2deg)}
+  71.5%{transform:rotate(-2deg) translateY(-1px)}
+  74%{transform:rotate(2deg)}
+  76.5%{transform:rotate(-1.8deg) translateY(-1px)}
+  79%{transform:rotate(1.2deg)}
+  82%,100%{transform:none}
+}
+/* cabeza y brazo: sacude la mano mientras habla, mira para arriba en el salto, se sacude de risa */
+html.mov .j-cabeza{animation:jCabeza 3.3s 1.4s infinite}
+@keyframes jCabeza{
+  0%,5%{transform:none}
+  10%{transform:rotate(-4.5deg)}
+  15%{transform:rotate(2.5deg)}
+  20%{transform:rotate(-4.5deg)}
+  25%{transform:rotate(2.5deg)}
+  30%{transform:rotate(-3deg)}
+  36%,40%{transform:none}
+  46%{transform:rotate(-4deg)}
+  52%{transform:rotate(2deg)}
+  57%,66%{transform:none}
+  68.5%{transform:rotate(3deg)}
+  71%{transform:rotate(-2.5deg)}
+  73.5%{transform:rotate(3deg)}
+  76%{transform:rotate(-2.5deg)}
+  78.5%{transform:rotate(1.5deg)}
+  82%,100%{transform:none}
+}
+/* el globito aparece con un pop, la frase se escribe letra por letra, rebota, se va y vuelve a decirlo */
+html.mov .pt-globo{animation:ptGlobo 3.3s 1.4s infinite both}
+@keyframes ptGlobo{
+  0%,3%{transform:scale(0) rotate(-8deg);opacity:0}
+  7%{transform:scale(1.13) rotate(3deg);opacity:1}
+  10%{transform:scale(.95) rotate(-1deg)}
+  13%{transform:none}
+  44%{transform:none}
+  47%{transform:scale(1.07) rotate(-2deg)}
+  50%{transform:scale(.98)}
+  53%,69%{transform:none;opacity:1}
+  72%{transform:scale(1.07);opacity:1}
+  77%,100%{transform:scale(0);opacity:0}
+}
+html.mov .pt-globo b{animation:ptLetra 3.3s infinite both;animation-delay:calc(1.4s + var(--i) * 62ms)}
+/* cada letra corre con su propio retraso (62 ms × posición): se apaga en su 75,5 %, que para la primera cae con el globito
+   ya casi cerrado y para la última (14 × 62 ms después) cae con el globito todavía cerrado, justo antes del pop siguiente.
+   Así nunca se ve el globito entero con letras que se van de a una */
+@keyframes ptLetra{
+  0%,9.9%{opacity:0;transform:translateY(5px) scale(.4)}
+  10%{opacity:1;transform:translateY(-7px) scale(1.3)}
+  13%{transform:translateY(1px) scale(.94)}
+  16%,75.4%{opacity:1;transform:none}
+  75.5%,100%{opacity:0;transform:none}
+}
+/* --- tocó pero el sonido de la apertura todavía no llegó (red lenta): el ▶ se achica y en su lugar gira un anillo,
+   hasta que el telón se abre (como mucho 2,5 s). La entrada le pone «cargando» al botón recién a los 0,15 s de espera:
+   si la espera es cortita no se ve nada. Con «menos movimiento» el anillo aparece quieto --- */
+.pt-carga{position:absolute;left:50%;top:50%;width:78px;height:78px;margin:-39px 0 0 -39px;opacity:0;pointer-events:none}
+.pt-carga i{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:50%}
+.pt-carga i::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;border-radius:50%;
+  background:conic-gradient(rgba(193,49,42,0),var(--rojo) 72%,rgba(38,22,15,.16) 72%);
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 12.5px),#000 calc(100% - 11.5px));
+  mask:radial-gradient(farthest-side,transparent calc(100% - 12.5px),#000 calc(100% - 11.5px))}
+.pt-carga i::after{content:"";position:absolute;left:50%;top:0;width:12px;height:12px;margin-left:-6px;border-radius:50%;
+  background:var(--rojo);transform-origin:6px 39px;transform:rotate(259deg)} /* la punta redonda del arco */
+.pt-boton.cargando .pt-play{opacity:0}
+.pt-boton.cargando .pt-carga{opacity:1}
+html.mov .pt-boton.cargando .pt-play{animation:ptPlaySale .18s ease-in both}
+@keyframes ptPlaySale{from{transform:none;opacity:1}to{transform:scale(.3) rotate(-50deg);opacity:0}}
+html.mov .pt-boton.cargando .pt-carga{animation:ptCargaEntra .3s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes ptCargaEntra{from{transform:scale(.3);opacity:0}to{transform:none;opacity:1}}
+html.mov .pt-boton.cargando .pt-carga i{animation:giro .8s linear infinite}
+/* ya tocó: el globito «¡Tocá el botón!» se va en el acto (aunque el telón espere un ratito) */
+html.mov.esperando .pt-globo{animation:ptGloboSale .16s both}
+html.esperando:not(.mov) .pt-globo{visibility:hidden}
+
+/* --- se abre: el telón se corre a los costados, la bambalina sube, el botón y Jerry se van --- */
+html.mov.abriendo .pt-tela.i{animation:ptAbreI 1.25s cubic-bezier(.55,.05,.35,1) both}
+html.mov.abriendo .pt-tela.d{animation:ptAbreD 1.25s cubic-bezier(.55,.05,.35,1) both}
+@keyframes ptAbreI{to{transform:translateX(-101%) scaleX(.3)}}
+@keyframes ptAbreD{to{transform:translateX(101%) scaleX(.3)}}
+html.mov.abriendo .pt-bambalina{animation:ptBambalina .7s .5s cubic-bezier(.5,0,.8,.5) both}
+@keyframes ptBambalina{to{transform:translateY(-115%)}}
+html.mov.abriendo .pt-cab{animation:ptCabSale .38s ease-in both}
+@keyframes ptCabSale{to{transform:translateY(-26px);opacity:0}}
+html.mov.abriendo .pt-centro{animation:ptSeVa .36s .1s cubic-bezier(.5,0,.75,.3) both}
+@keyframes ptSeVa{to{transform:scale(.5);opacity:0}}
+html.mov.abriendo .pt-globo{animation:ptGloboSale .16s both}
+@keyframes ptGloboSale{to{transform:scale(0);opacity:0}}
+html.mov.abriendo .j-entra{animation:jSale .55s cubic-bezier(.45,0,.8,.45) both}
+@keyframes jSale{0%{transform:none}22%{transform:translateY(-18px) rotate(5deg) scale(.97,1.05)}100%{transform:translateX(150%) translateY(-4px) rotate(14deg)}}
+/* sin movimiento: el telón se va con un fundido corto */
+html.abriendo:not(.mov) .portada{animation:ptFundido .3s both}
+@keyframes ptFundido{to{opacity:0}}
+
+/* celular acostado (poca altura): todo más chico, sin encimarse */
+@media (max-height:520px){
+  .portada{--jw:clamp(110px,26vh,150px)}
+  .pt-bambalina{height:40px;background-size:56px 40px}
+  .pt-cab{top:calc(env(safe-area-inset-top) + 48px)}
+  .pt-tit{font-size:clamp(24px,7.5vh,34px);margin-top:4px}
+  .pt-centro{top:max(56%,152px);transform:scale(.7)}
+  .pt-col{width:min(100%,720px);margin-left:max(-50%,-360px)} /* Jerry y su globito más al costado: no tocan el botón */
+  .pt-globo{font-size:16px;padding:7px 12px 6px}
+}
+
+/* ---------- control chiquito de sonido (fijo en la esquina, respeta el borde seguro del iPhone) ----------
+   Nunca tapa un texto, un campo ni un botón: si arriba no hay lugar, baja al rincón de abajo; si tampoco, se esconde
+   un momento (sin dejar un fantasma que invite a tocar lo que hay debajo) y vuelve apenas hay lugar */
+.ctl-sonido{position:fixed;z-index:60;top:calc(10px + env(safe-area-inset-top));right:max(calc(10px + env(safe-area-inset-right)),calc((100vw - 460px) / 2 + 10px));
+  width:44px;height:44px;display:grid;place-items:center;padding:0;border-radius:50%;background:var(--crema);border:2.5px solid var(--tinta);
+  box-shadow:0 3px 0 var(--tinta);color:var(--tinta);cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+  transition:opacity .18s,transform .18s,visibility 0s}
+.ctl-sonido.abajo{top:auto;bottom:calc(10px + env(safe-area-inset-bottom))}
+.ctl-sonido[hidden]{display:none}
+.ctl-sonido:active{transform:translateY(2px);box-shadow:0 1px 0 var(--tinta)}
+.ctl-sonido:focus-visible{outline:3px solid var(--queso);outline-offset:3px}
+.ctl-sonido svg{width:24px;height:24px;display:block}
+.ctl-sonido .si-on{display:none}
+.ctl-sonido[aria-pressed=true]{background:var(--queso)}
+.ctl-sonido[aria-pressed=true] .si-on{display:inline}
+.ctl-sonido[aria-pressed=true] .si-off{display:none}
+/* se esconde en el acto (si algo se le mete abajo, no queda encima ni un instante); vuelve con un fundido corto */
+.ctl-sonido.apartado{opacity:0;visibility:hidden;pointer-events:none;transform:scale(.84);transition:none}
+html.anim .ctl-sonido.entra{animation:ctlEntra .42s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes ctlEntra{from{transform:scale(.2);opacity:0}}
+/* la persecución se esfuma si algo tocable se le cruza (scroll con inercia) */
+.pasada.fuera{opacity:0;transition:opacity .12s linear}
+
+/* la pantalla deja de moverse cuando no se ve (ahorra batería) */
+.pantalla.pausa *,.pantalla.pausa::after,.pantalla.pausa .pelicula::before{animation-play-state:paused !important}
+/* mientras el telón de la entrada se abre, la función (todo lo de la pantalla) ya está armada pero quieta en su primer
+   cuadro: arranca desde cero recién cuando el telón terminó de abrirse (la entrada saca «previa» en ese momento) */
+html.previa .pantalla *,html.previa .pantalla::after,html.previa .pelicula::before{animation-play-state:paused !important}
+
+/* ======== menos movimiento: poses quietas ======== */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .gracias .otra{animation:otraEspera .7s both !important} /* no es movimiento: solo la espera anti doble toque */
+  html.abriendo .portada{animation:ptFundido .3s both !important} /* el telón se va con un fundido, sin correrse */
+  .actor{opacity:0}
+  .juntos{opacity:1;transform:translate(70px,82px)}
+  .torta{opacity:1;transform:translate(292px,166px)}
+  .feliz{opacity:1;transform:translate(8px,34px) rotate(-7deg)}
+  .pasada{display:none}
+  .espia-cab{transform:translateY(10px)}
+  .nam{opacity:1}
+}
+</style>
+</head>
+<body>
+<!-- ===== ENTRADA: telón cerrado hasta el primer toque ===== -->
+<div class="portada" id="portada" role="dialog" aria-modal="true" aria-labelledby="ptTit">
+  <div class="pt-tela i" aria-hidden="true"></div><div class="pt-tela d" aria-hidden="true"></div>
+  <div class="pt-bambalina" aria-hidden="true"></div>
+  <div class="pt-col">
+    <div class="pt-cab">
+      <p class="pt-sub">Timo Producciones presenta</p>
+      <p class="pt-tit" id="ptTit">¡El cumple de Timo!</p>
+    </div>
+    <div class="pt-centro">
+      <i class="pt-halo" aria-hidden="true"></i><i class="pt-onda o2" aria-hidden="true"></i><i class="pt-onda" aria-hidden="true"></i>
+      <button type="button" class="pt-boton" id="ptBoton" aria-label="Abrir la invitación">
+        <span class="pt-cara" aria-hidden="true"><i class="pt-anillo"></i><i class="pt-brillo"></i></span>
+        <i class="pt-carga" aria-hidden="true"><i></i></i>
+        <svg class="pt-play" viewBox="0 0 64 70" aria-hidden="true"><path d="M8 9.5C8 5.6 12.2 3.2 15.6 5.2L56.8 30.4C60 32.4 60 37.2 56.8 39.2L15.6 64.4C12.2 66.4 8 64 8 60.1Z" transform="translate(0 4)" fill="#26160f"/><path d="M8 9.5C8 5.6 12.2 3.2 15.6 5.2L56.8 30.4C60 32.4 60 37.2 56.8 39.2L15.6 64.4C12.2 66.4 8 64 8 60.1Z" fill="#c1312a" stroke="#26160f" stroke-width="3.2" stroke-linejoin="round"/><path d="M15 14.5 21 18" stroke="#ef6a5f" stroke-width="3.4" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="pt-jerry" aria-hidden="true">
+      <div class="j-entra"><div class="j-vaiven"><div class="j-accion"><div class="j-fig"><i class="j-cuerpo"></i><i class="j-cabeza"></i></div></div></div></div>
+      <p class="pt-globo"><b style="--i:0">¡</b><b style="--i:1">T</b><b style="--i:2">o</b><b style="--i:3">c</b><b style="--i:4">á</b> <b style="--i:6">e</b><b style="--i:7">l</b> <b style="--i:9">b</b><b style="--i:10">o</b><b style="--i:11">t</b><b style="--i:12">ó</b><b style="--i:13">n</b><b style="--i:14">!</b></p>
+    </div>
+  </div>
+</div>
+<script>
+  // Entrada: se abre SIEMPRE con un gesto (el botón, cualquier parte del telón o una tecla).
+  // 1) En ese mismo gesto avisa «timo:abrir»: el sonido se destraba ahí (los celulares lo exigen) y, si el sonido de la
+  //    apertura todavía no está listo (red lenta), le pide a la entrada que espere. Mientras espera, el ▶ se vuelve un
+  //    anillo que gira; se abre apenas el sonido está, y como mucho a los 2,5 s se abre igual (el sonido entra cuando llegue).
+  // 2) Cuando el telón empieza a abrirse avisa «timo:telon» (con el instante exacto): el sonido del telón, el ta-da y la
+  //    música arrancan en ese mismo momento.
+  // 3) La función de la tarjeta queda armada en su primer cuadro, quieta, y arranca desde cero recién cuando el telón
+  //    terminó de abrirse («timo:funcion»).
+  // No depende de nada más: aunque falle el resto, el telón se abre igual.
+  (function(){
+    var h=document.documentElement,pt=document.getElementById('portada'),bt=document.getElementById('ptBoton');
+    if(!pt||!bt||!h.classList.contains('cerrado'))return;
+    var TOPE=2500,pedido=false,abierto=false,mov=h.classList.contains('mov');
+    function tapar(si){var m=document.querySelector('main');if(m){if(si)m.setAttribute('inert','');else m.removeAttribute('inert')}}
+    document.addEventListener('DOMContentLoaded',function(){if(!abierto)tapar(true)});
+    function avisar(n,d){try{document.dispatchEvent(new CustomEvent(n,{detail:d||{}}))}catch(e){}}
+    function abrir(){
+      if(pedido)return;
+      pedido=true;
+      bt.classList.remove('apretado');bt.classList.add('hundido');
+      var listo=false,esperas=[],tope,girar;
+      function ya(){if(listo)return;listo=true;clearTimeout(tope);clearTimeout(girar);correr()}
+      function pedirSonido(){avisar('timo:abrir',{esperar:function(p){if(p&&p.then)esperas.push(p)}})}
+      // tocó antes de que terminara de llegar la página: el sonido todavía no está armado; se lo espera (mismo tope)
+      var antes=document.readyState==='loading'&&h.classList.contains('audio');
+      if(antes)document.addEventListener('DOMContentLoaded',function(){if(listo)return;pedirSonido();if(esperas.length)Promise.all(esperas).then(ya,ya);else ya()});
+      else{pedirSonido();if(!esperas.length)return ya()}
+      h.classList.add('esperando');
+      tope=setTimeout(ya,TOPE);
+      girar=setTimeout(function(){if(!listo)bt.classList.add('cargando')},150); // si la espera es cortita, ni se ve
+      if(esperas.length)Promise.all(esperas).then(ya,ya);
+    }
+    function correr(){
+      abierto=true;
+      var t0=performance.now();
+      window.timoTelon={t0:t0}; // (por si el sonido llega después: sabe cuándo se abrió)
+      try{window.scrollTo(0,0)}catch(e){}
+      h.classList.remove('cerrado','esperando');h.classList.add('abriendo');
+      if(mov)h.classList.add('anim','previa'); // la función, armada en su primer cuadro y quieta
+      tapar(false);
+      avisar('timo:telon',{t0:t0});
+      if(mov){
+        var tela=pt.querySelector('.pt-tela.i'),empezo=false,resguardo,aguarda=false;
+        var funcion=function(){ // el telón terminó de abrirse: la función arranca desde cero
+          if(empezo)return;
+          if(document.visibilityState==='hidden'){ // no la está mirando (otra pestaña): espera quieta a que vuelva
+            if(!aguarda){aguarda=true;document.addEventListener('visibilitychange',function vuelve(){
+              if(document.visibilityState!=='visible')return;
+              document.removeEventListener('visibilitychange',vuelve);aguarda=false;funcion();
+            })}
+            return;
+          }
+          empezo=true;clearTimeout(resguardo);tela.removeEventListener('animationend',alTerminar);
+          h.classList.remove('previa');avisar('timo:funcion',{t:performance.now()});
+        };
+        var alTerminar=function(e){if(e.target===tela&&e.animationName==='ptAbreI')funcion()};
+        tela.addEventListener('animationend',alTerminar);
+        resguardo=setTimeout(funcion,1650); // por si el aviso del final no llega (1,25 s de apertura + margen)
+      }
+      // el telón se queda atajando toques mientras se abre (así un toque «fantasma» no cae en la tarjeta)
+      setTimeout(function(){h.classList.remove('abriendo');h.classList.add('abierto')},mov?1400:420);
+    }
+    pt.addEventListener('pointerdown',function(e){if(!pedido&&bt.contains(e.target))bt.classList.add('apretado')});
+    pt.addEventListener('pointercancel',function(){bt.classList.remove('apretado')});
+    pt.addEventListener('pointerup',function(e){if(!(e.button>0))abrir()});
+    pt.addEventListener('touchend',abrir);
+    pt.addEventListener('click',abrir);
+    addEventListener('keydown',function(e){
+      if(pedido||e.metaKey||e.ctrlKey||e.altKey||/^(Tab|Shift|Control|Alt|Meta|CapsLock|Escape|Fn|OS)$/.test(e.key||''))return;
+      if(e.key===' '||e.key==='Enter')e.preventDefault();
+      abrir();
+    });
+  })();
+</script>
+<main class="tarjeta">
+  <div class="marco">
+  <div class="pantalla" id="pantalla">
+    <div class="sol" aria-hidden="true"></div>
+    <div class="vineta" aria-hidden="true"></div>
+    <span class="rayita" aria-hidden="true"></span>
+    <header class="cartel">
+      <p class="presenta"><span><b>Timo</b> Producciones presenta</span></p>
+      <p class="tyj">Tom y Jerry <em>en…</em></p>
+      <div class="asomo">
+        <img class="asomados" src="img/asomados.webp" width="700" height="559" alt="Tom y Jerry asomados, saludando">
+        <div class="placa">
+          <h1>¡El cumple<br>de Timo!</h1>
+          <p class="cinta">¡Timoteo cumple&nbsp;6!</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="escena" id="escena" aria-label="Tom persigue a Jerry y se da contra la pared, Spike lo espanta, Jerry sale con un queso que se vuelve torta con la velita del 6, y al final Tom y Jerry festejan juntos el cumple">
+      <div class="stage" id="stage">
+        <div class="pared"></div>
+        <svg class="banderines" viewBox="0 0 390 40" aria-hidden="true">
+          <path d="M-4 4 Q195 30 394 4" fill="none" stroke="#26160f" stroke-width="2"/>
+          <g stroke="#26160f" stroke-width="2" stroke-linejoin="round">
+            <path d="M14 7 L34 11 L22 31Z" fill="#c1312a"/><path d="M50 14 L70 17 L58 37Z" fill="#f8c945"/>
+            <path d="M86 19 L106 21 L94 41Z" fill="#1f3b66"/><path d="M122 22 L142 23 L131 43Z" fill="#fbeed3"/>
+            <path d="M158 24 L178 24 L168 44Z" fill="#c1312a"/><path d="M194 24 L214 24 L204 44Z" fill="#f8c945"/>
+            <path d="M230 24 L250 23 L241 43Z" fill="#1f3b66"/><path d="M266 22 L286 21 L278 41Z" fill="#fbeed3"/>
+            <path d="M302 19 L322 17 L314 37Z" fill="#c1312a"/><path d="M338 14 L358 11 L350 31Z" fill="#f8c945"/>
+          </g>
+        </svg>
+        <div class="cuadro L"><div class="cuadro-in"><span>6</span></div></div>
+        <div class="zocalo"></div>
+        <div class="cueva"></div>
+        <div class="piso"></div>
+
+        <!-- final (detrás de todo lo demás) -->
+        <div class="actor L juntos"><img src="img/juntos.webp" width="520" height="396" alt=""></div>
+        <div class="actor L burbuja puf" aria-hidden="true"><svg viewBox="0 0 60 34"><g fill="#fbeed3" stroke="#26160f" stroke-width="2"><circle cx="14" cy="22" r="10"/><circle cx="30" cy="14" r="12"/><circle cx="46" cy="22" r="10"/></g></svg></div>
+        <div class="actor L tl"><img src="img/tom_lanza.webp" width="390" height="163" alt=""></div>
+        <div class="actor L jr"><div class="sombra"></div><div class="bob"><div class="rayas"></div><img src="img/jerry_corre.webp" width="240" height="120" alt=""></div></div>
+        <div class="actor L jq"><div class="sombra"></div><div class="bob">
+          <div class="espejo"><img src="img/jerry_queso.webp" width="400" height="395" alt=""></div>
+          <div class="vela L" aria-hidden="true"><svg viewBox="0 0 20 44"><path d="M10 13V7" stroke="#26160f" stroke-width="1.6" stroke-linecap="round"/><g class="llama"><path d="M10 -2C14.5 3 15 6.5 10 9.5 5 6.5 5.5 3 10 -2Z" fill="#ffae2b" stroke="#26160f" stroke-width="1.4"/><path d="M10 3C11.8 5 11.8 6.8 10 8 8.2 6.8 8.2 5 10 3Z" fill="#fff4b0"/></g><text x="10" y="42" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="33" fill="#c1312a" stroke="#26160f" stroke-width="2" paint-order="stroke">6</text></svg></div>
+          <div class="chispa L" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0 14.6 9.4 24 12 14.6 14.6 12 24 9.4 14.6 0 12 9.4 9.4Z" fill="#fff4b0" stroke="#26160f" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          <div class="excl L" aria-hidden="true"><svg viewBox="0 0 22 34"><path d="M6 2H16L13.5 22H8.5Z" fill="#c1312a" stroke="#26160f" stroke-width="2.2" stroke-linejoin="round"/><circle cx="11" cy="28.5" r="3.8" fill="#c1312a" stroke="#26160f" stroke-width="2.2"/></svg></div>
+        </div></div>
+        <div class="actor L ts"><div class="sombra"></div><img src="img/tom_susto.webp" width="260" height="262" alt=""></div>
+        <div class="actor L sp"><div class="sombra"></div><div class="bob"><img src="img/spike.webp" width="310" height="296" alt=""></div></div>
+        <div class="actor L tf"><div class="sombra"></div><div class="bob"><div class="rayas"></div><img src="img/tom_corre.webp" width="340" height="226" alt=""></div></div>
+        <div class="actor L tc"><div class="espejo"><div class="sombra"></div><div class="bob"><div class="rayas"></div><img src="img/tom_corre.webp" width="340" height="226" alt=""></div></div></div>
+        <div class="actor L burbuja nube" aria-hidden="true"><div class="sacudir"><svg viewBox="0 0 200 132">
+          <path d="M26 96C10 100 4 116 16 124" fill="none" stroke="#26160f" stroke-width="10" stroke-linecap="round"/>
+          <path d="M26 96C10 100 4 116 16 124" fill="none" stroke="#8d98a3" stroke-width="5.5" stroke-linecap="round"/>
+          <circle cx="16" cy="124" r="5.5" fill="#fff" stroke="#26160f" stroke-width="2"/>
+          <path d="M176 94C192 98 198 84 190 74 186 69 192 62 196 64" fill="none" stroke="#26160f" stroke-width="3.2" stroke-linecap="round"/>
+          <path d="M176 94C192 98 198 84 190 74 186 69 192 62 196 64" fill="none" stroke="#c9822f" stroke-width="1.4" stroke-linecap="round"/>
+          <g fill="#26160f"><circle cx="42" cy="72" r="31"/><circle cx="72" cy="44" r="33"/><circle cx="112" cy="36" r="35"/><circle cx="150" cy="50" r="31"/><circle cx="168" cy="82" r="27"/><circle cx="134" cy="96" r="33"/><circle cx="90" cy="98" r="34"/><circle cx="52" cy="98" r="26"/><circle cx="100" cy="68" r="41"/></g>
+          <g fill="#fbeed3"><circle cx="42" cy="72" r="28"/><circle cx="72" cy="44" r="30"/><circle cx="112" cy="36" r="32"/><circle cx="150" cy="50" r="28"/><circle cx="168" cy="82" r="24"/><circle cx="134" cy="96" r="30"/><circle cx="90" cy="98" r="31"/><circle cx="52" cy="98" r="23"/><circle cx="100" cy="68" r="38"/></g>
+          <g fill="#f8c945" stroke="#26160f" stroke-width="1.8" stroke-linejoin="round"><path d="M50 36 53 45 62 45 55 51 58 60 50 54 42 60 45 51 38 45 47 45Z"/><path d="M152 28 154.5 35 162 35 156 39.5 158 47 152 42.5 146 47 148 39.5 142 35 149.5 35Z"/><path d="M118 104 120.5 111 128 111 122 115.5 124 123 118 118.5 112 123 114 115.5 108 111 115.5 111Z"/></g>
+          <path d="M30 50 20 42M168 110 178 118M150 16 156 6" stroke="#26160f" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="74" y="84" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="21" fill="#c1312a" stroke="#26160f" stroke-width="1.1" paint-order="stroke" transform="rotate(-12 74 84)">¡PIM!</text>
+          <text x="134" y="76" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="21" fill="#1f3b66" stroke="#26160f" stroke-width="1.1" paint-order="stroke" transform="rotate(10 134 76)">¡PUM!</text>
+        </svg></div></div>
+        <div class="actor L torta" aria-hidden="true"><div class="sombra"></div><svg viewBox="0 -30 88 100" style="display:block;width:100%;height:auto;overflow:visible">
+          <path d="M44 -1V-8" stroke="#26160f" stroke-width="1.8" stroke-linecap="round"/>
+          <g class="llama"><path d="M44 -24C49.5 -18 50 -13.5 44 -9.5 38 -13.5 38.5 -18 44 -24Z" fill="#ffae2b" stroke="#26160f" stroke-width="1.6"/><path d="M44 -17.5C46 -15.2 46 -13 44 -11.6 42 -13 42 -15.2 44 -17.5Z" fill="#fff4b0"/></g>
+          <g stroke="#26160f" stroke-width="2.4" stroke-linejoin="round">
+            <path d="M4 34 24 16H86L66 34Z" fill="#ffe27d"/>
+            <path d="M66 34 86 16V50L66 68Z" fill="#e2a228"/>
+            <path d="M4 34H66V68H4Z" fill="#f8c945"/>
+          </g>
+          <g fill="#e6a02a" stroke="#b36d12" stroke-width="1"><ellipse cx="18" cy="46" rx="5.5" ry="4.2"/><ellipse cx="40" cy="56" rx="6.5" ry="4.8"/><ellipse cx="54" cy="43" rx="4.2" ry="3.4"/><ellipse cx="25" cy="61" rx="3.2" ry="2.3"/><ellipse cx="76" cy="38" rx="3" ry="4.6"/><ellipse cx="60" cy="24" rx="5" ry="2"/></g>
+          <text x="44" y="27" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="34" fill="#c1312a" stroke="#26160f" stroke-width="2.2" paint-order="stroke">6</text>
+        </svg></div>
+        <div class="actor L estrellas" aria-hidden="true">
+          <svg viewBox="0 0 20 20"><path d="M10 0 12.6 6.6 20 7.4 14.4 12.2 16 20 10 16 4 20 5.6 12.2 0 7.4 7.4 6.6Z" fill="#f8c945" stroke="#26160f" stroke-width="2"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 0 12.6 6.6 20 7.4 14.4 12.2 16 20 10 16 4 20 5.6 12.2 0 7.4 7.4 6.6Z" fill="#fbeed3" stroke="#26160f" stroke-width="2"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 0 12.6 6.6 20 7.4 14.4 12.2 16 20 10 16 4 20 5.6 12.2 0 7.4 7.4 6.6Z" fill="#f8c945" stroke="#26160f" stroke-width="2"/></svg>
+        </div>
+        <div class="actor L burbuja paf" aria-hidden="true"><svg viewBox="0 0 92 60"><path d="M46 2 54 16 72 6 68 22 90 22 74 32 88 46 66 42 64 58 50 46 36 58 32 42 10 48 22 34 2 26 22 20 14 6 34 14Z" fill="#f8c945" stroke="#26160f" stroke-width="2.5" stroke-linejoin="round"/><text x="46" y="37" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="19" fill="#c1312a" stroke="#26160f" stroke-width="1" paint-order="stroke">¡PAF!</text></svg></div>
+        <div class="actor L burbuja guau" aria-hidden="true"><svg viewBox="0 0 120 70"><path d="M60 4C92 4 116 14 116 29C116 43 96 52 72 53L96 68 56 53C28 52 4 43 4 29 4 14 28 4 60 4Z" fill="#fff" stroke="#26160f" stroke-width="3" stroke-linejoin="round"/><text x="60" y="38" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="25" fill="#c1312a" stroke="#26160f" stroke-width="1.2" paint-order="stroke">¡GUAU!</text></svg></div>
+        <div class="actor L burbuja feliz" aria-hidden="true"><svg viewBox="0 0 160 92"><path d="M158 50 139 55 149 67 128 66 129 80 109 74 103 88 86 78 72 90 62 77 43 85 41 71 20 74 25 61 5 59 18 49 2 42 21 37 11 25 32 26 31 12 51 18 57 4 74 14 88 2 98 15 117 7 119 21 140 18 135 31 155 33 142 43Z" fill="#c1312a" stroke="#26160f" stroke-width="3" stroke-linejoin="round"/><text x="80" y="44" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="21" fill="#f8c945" stroke="#26160f" stroke-width="1.4" paint-order="stroke">¡FELIZ</text><text x="80" y="66" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="21" fill="#f8c945" stroke="#26160f" stroke-width="1.4" paint-order="stroke">CUMPLE!</text></svg></div>
+        <!-- confeti del final -->
+        <i class="actor L cf" style="--x:18px;--d:14px;--r:420deg;--t:0s;--c:#c1312a"></i>
+        <i class="actor L cf" style="--x:44px;--d:-12px;--r:-380deg;--t:.22s;--c:#f8c945"></i>
+        <i class="actor L cf" style="--x:70px;--d:10px;--r:360deg;--t:.08s;--c:#2c528c"></i>
+        <i class="actor L cf" style="--x:96px;--d:-16px;--r:-440deg;--t:.3s;--c:#fbeed3"></i>
+        <i class="actor L cf" style="--x:122px;--d:12px;--r:400deg;--t:.14s;--c:#c1312a"></i>
+        <i class="actor L cf" style="--x:148px;--d:-10px;--r:-360deg;--t:.36s;--c:#f8c945"></i>
+        <i class="actor L cf" style="--x:176px;--d:16px;--r:460deg;--t:.04s;--c:#2c528c"></i>
+        <i class="actor L cf" style="--x:202px;--d:-14px;--r:-400deg;--t:.26s;--c:#fbeed3"></i>
+        <i class="actor L cf" style="--x:228px;--d:12px;--r:380deg;--t:.12s;--c:#c1312a"></i>
+        <i class="actor L cf" style="--x:254px;--d:-12px;--r:-420deg;--t:.4s;--c:#f8c945"></i>
+        <i class="actor L cf" style="--x:280px;--d:14px;--r:440deg;--t:.18s;--c:#2c528c"></i>
+        <i class="actor L cf" style="--x:306px;--d:-16px;--r:-360deg;--t:.32s;--c:#fbeed3"></i>
+        <i class="actor L cf" style="--x:332px;--d:10px;--r:400deg;--t:.06s;--c:#c1312a"></i>
+        <i class="actor L cf" style="--x:358px;--d:-12px;--r:-440deg;--t:.24s;--c:#f8c945"></i>
+        <i class="actor L cf" style="--x:140px;--d:12px;--r:380deg;--t:.46s;--c:#fbeed3"></i>
+        <i class="actor L cf" style="--x:264px;--d:-10px;--r:-400deg;--t:.5s;--c:#c1312a"></i>
+        <div class="cortina L i" aria-hidden="true"></div><div class="cortina L d" aria-hidden="true"></div>
+      </div>
+    </section>
+    <div class="pelicula" aria-hidden="true"></div>
+  </div>
+  </div>
+
+  <div class="papel">
+  <!-- ===== CONFIRMACIÓN ===== -->
+  <section class="bloque" id="secForm" aria-label="Confirmación">
+    <form class="form" id="form" novalidate>
+      <div class="form-cab">
+        <p class="kicker">Boletería · reservá tu lugar</p>
+        <h2>¿Venís al cumple?</h2>
+        <span class="plazo">Confirmá hasta el domingo 4&nbsp;de&nbsp;octubre</span>
+      </div>
+      <div class="form-cuerpo">
+        <div class="campo">
+          <label class="etq" for="nombre">¿Cómo se llama el invitado?</label>
+          <input id="nombre" type="text" placeholder="Nombre del nene o la nena" autocomplete="off">
+          <p class="ayuda">Si vienen hermanitos, poné todos los nombres.</p>
+        </div>
+        <div class="campo">
+          <span class="etq">¿Vienen?</span>
+          <div class="opciones">
+            <button type="button" class="op si" aria-pressed="false">¡Sí, vamos!</button>
+            <button type="button" class="op no" aria-pressed="false">No podemos</button>
+          </div>
+        </div>
+        <div class="campo oculto" id="bloqueCuantos">
+          <span class="etq">¿Cuántos van?</span>
+          <div class="cuantos">
+            <div class="cont"><span class="nom">Niños</span>
+              <div class="ctl"><button type="button" data-d="-1" aria-label="uno menos">−</button><output>1</output><button type="button" data-d="1" aria-label="uno más">+</button></div></div>
+            <div class="cont"><span class="nom">Adultos</span>
+              <div class="ctl"><button type="button" data-d="-1" aria-label="uno menos">−</button><output>1</output><button type="button" data-d="1" aria-label="uno más">+</button></div></div>
+          </div>
+        </div>
+        <div class="campo oculto" id="bloqueNota">
+          <label class="etq" for="nota">¿Alguna alergia o comida especial?</label>
+          <textarea id="nota" rows="2" placeholder="Opcional"></textarea>
+        </div>
+        <p class="error oculto" id="error"></p>
+        <button class="enviar" type="submit" id="btnEnviar">Enviar confirmación</button>
+      </div>
+      <div class="gracias oculto" id="gracias">
+        <div class="festejo" id="festejo" aria-hidden="true">
+          <div class="fest-tj"><div class="sombra"></div><img src="img/tom_jerry.webp" width="240" height="404" alt=""></div>
+          <i class="fc" style="--x:-96px;--y:-70px;--r:400deg;--c:#c1312a"></i>
+          <i class="fc" style="--x:-70px;--y:-104px;--r:-380deg;--c:#f8c945"></i>
+          <i class="fc" style="--x:-40px;--y:-120px;--r:360deg;--c:#2c528c"></i>
+          <i class="fc" style="--x:-12px;--y:-130px;--r:-420deg;--c:#c1312a"></i>
+          <i class="fc" style="--x:16px;--y:-126px;--r:440deg;--c:#f8c945"></i>
+          <i class="fc" style="--x:44px;--y:-116px;--r:-360deg;--c:#2c528c"></i>
+          <i class="fc" style="--x:74px;--y:-100px;--r:380deg;--c:#c1312a"></i>
+          <i class="fc" style="--x:100px;--y:-66px;--r:-400deg;--c:#f8c945"></i>
+          <i class="fc" style="--x:-116px;--y:-30px;--r:420deg;--c:#2c528c"></i>
+          <i class="fc" style="--x:118px;--y:-28px;--r:-440deg;--c:#c1312a"></i>
+          <i class="fc" style="--x:-56px;--y:-50px;--r:360deg;--c:#fbeed3"></i>
+          <i class="fc" style="--x:58px;--y:-48px;--r:-380deg;--c:#fbeed3"></i>
+          <div class="fest-chau"><div class="sombra"></div><img src="img/jerry_saluda.webp" width="260" height="246" alt=""></div>
+          <div class="globo"><svg viewBox="0 0 118 72"><path d="M59 3C90 3 114 12 114 28C114 43 94 52 66 52H40L18 62 24 50C10 46 4 38 4 28 4 12 28 3 59 3Z" fill="#fff" stroke="#26160f" stroke-width="3" stroke-linejoin="round"/><text x="59" y="26" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="17" fill="#1f3b66" stroke="#26160f" stroke-width="1" paint-order="stroke">¡Otra vez</text><text x="59" y="45" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="17" fill="#1f3b66" stroke="#26160f" stroke-width="1" paint-order="stroke">será!</text></svg></div>
+        </div>
+        <h3 id="graciasTit">¡Listo, gracias!</h3>
+        <p id="graciasTxt"></p>
+        <button type="button" class="otra" id="otra">Mandar otra confirmación</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ===== DATOS ===== -->
+  <section class="bloque datos" id="secDatos" aria-label="Fecha, hora y lugar">
+    <div class="boleto">
+      <div class="espia" id="espia" aria-hidden="true">
+        <div class="espia-cab"><img src="img/tom_cabeza.webp" width="190" height="145" alt=""></div>
+        <div class="espia-sig"><svg viewBox="0 0 24 34"><text x="12" y="30" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="34" fill="#1f3b66" stroke="#26160f" stroke-width="2" paint-order="stroke">?</text></svg></div>
+      </div>
+      <div class="entrada">
+        <div class="talon"><span class="sem">Viernes</span><span class="num">9</span><span class="mes">Octubre</span></div>
+        <div class="info">
+          <p class="adm">Entrada · función única</p>
+          <div class="fila"><b>Horario</b><p>18:00 a 20:30 h</p></div>
+          <div class="fila"><b>Lugar</b><p>Hakuna Matata Fútbol<span>Av. Pedro Ferré 2360<br>Corrientes</span></p></div>
+        </div>
+      </div>
+    </div>
+    <a class="mapa" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Pedro+Ferr%C3%A9+2360+Corrientes" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C7.9 2 4.8 5.1 4.8 9.1c0 5.2 7.2 12.9 7.2 12.9s7.2-7.7 7.2-12.9C19.2 5.1 16.1 2 12 2Z" fill="#f8c945" stroke="#26160f" stroke-width="2"/><circle cx="12" cy="9.2" r="2.8" fill="#26160f"/></svg>
+      Cómo llegar</a>
+  </section>
+
+  <!-- ===== CIERRE ===== -->
+  <footer class="cierre">
+    <div class="fin-escena" id="finQueso">
+      <div class="iris-fin">
+        <div class="come"><img src="img/jerry_queso.webp" width="400" height="395" alt="Jerry comiendo un queso"></div>
+        <div class="migas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="nam" aria-hidden="true"><svg viewBox="0 0 104 66"><path d="M56 4C84 4 100 14 100 28C100 42 84 51 60 51H40L14 63 24 48C12 44 6 37 6 28 6 14 26 4 56 4Z" fill="#fff" stroke="#26160f" stroke-width="3" stroke-linejoin="round"/><text x="54" y="37" text-anchor="middle" font-family="Luckiest Guy,Impact,sans-serif" font-size="25" fill="#c1312a" stroke="#26160f" stroke-width="1.2" paint-order="stroke">¡Ñam!</text></svg></div>
+    </div>
+    <p class="fin-tit">¡Te esperamos!</p>
+    <p class="fin-sub"><span>Timo · 6 años ·</span> <span>viernes 9 de octubre</span></p>
+  </footer>
+  </div>
+</main>
+
+<!-- escena 1 al bajar: capa fija por encima de todo, no se puede tocar -->
+<div class="pasada" id="pasada" aria-hidden="true">
+  <div class="p-actor p-jerry"><div class="sombra"></div><div class="bob"><div class="rayas"></div><img src="img/jerry_corre.webp" width="240" height="120" alt=""></div></div>
+  <div class="p-actor p-tom"><div class="sombra"></div><div class="bob"><div class="rayas"></div><img src="img/tom_lanza.webp" width="390" height="163" alt=""></div></div>
+</div>
+
+<!-- control chiquito de sonido (aparece cuando el cartel grande ya no está) -->
+<button type="button" class="ctl-sonido" id="ctlSonido" aria-pressed="false" aria-label="Activar el sonido" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9.2h3.6L12 5v14l-4.9-4.2H3.5Z" fill="#fbeed3" stroke="#26160f" stroke-width="1.8" stroke-linejoin="round"/>
+    <g class="si-on" fill="none" stroke="#26160f" stroke-width="2" stroke-linecap="round"><path d="M15.2 9.3c1.3 1.5 1.3 3.9 0 5.4"/><path d="M18 7c2.6 2.9 2.6 7.1 0 10"/></g>
+    <g class="si-off" fill="none" stroke="#c1312a" stroke-width="2.4" stroke-linecap="round"><path d="M15.5 9.5l5 5M20.5 9.5l-5 5"/></g></svg>
+</button>
+
+<script>
+  // la escena se dibuja a 390×270 y se escala al ancho real (nítida en cualquier celular)
+  (function(){
+    var esc=document.getElementById('escena'),st=document.getElementById('stage');
+    function ajustar(){var w=esc.clientWidth;if(w)st.style.transform='scale('+(w/390)+')'}
+    ajustar();
+    if('ResizeObserver' in window)new ResizeObserver(ajustar).observe(esc);else addEventListener('resize',ajustar);
+  })();
+</script>
+<script>
+  // Lo que nada puede tapar (ni la persecución ni el control de sonido): todos los textos de la tarjeta (los de los dibujos
+  // no) y todo lo que se toca. Se arma cada vez que se pide: si cambia un texto (el de «gracias»), vale igual.
+  // Cada uno viene como {el,r} (se cuida entero: campos, botones, el cartelito del plazo, la cinta del cartel) o
+  // {el,r,texto} (con el nodo de texto, para medir solo las letras: un título ocupa todo el ancho, sus letras no).
+  // «r» = la caja que lo contiene seguro: la del elemento sumada a la de sus letras (con las tipografías de dibujito
+  // las letras salen por arriba y por abajo de su renglón, y la inclinación del «¡Te esperamos!» las corre más).
+  window.timoNoTapar=function(){
+    var out=[],enteros=[].slice.call(document.querySelectorAll('#form input,#form textarea,#form button,#error,.mapa,.plazo,.cinta'))
+      .filter(function(e){return e.getClientRects().length>0});
+    enteros.forEach(function(e){out.push({el:e,r:e.getBoundingClientRect()})});
+    var w=document.createTreeWalker(document.querySelector('main'),NodeFilter.SHOW_TEXT,null),n,el,a,b,rg=document.createRange();
+    while((n=w.nextNode())){
+      if(!/\S/.test(n.data))continue;
+      el=n.parentElement;
+      if(!el||el.closest('svg,[aria-hidden="true"]')||enteros.some(function(e){return e.contains(el)}))continue;
+      if(!el.getClientRects().length)continue;
+      a=el.getBoundingClientRect();rg.selectNodeContents(n);b=rg.getBoundingClientRect();
+      out.push({el:el,texto:n,r:{left:Math.min(a.left,b.left),top:Math.min(a.top,b.top),right:Math.max(a.right,b.right),bottom:Math.max(a.bottom,b.bottom)}});
+    }
+    return out;
+  };
+</script>
+<script>
+  // Escenas al bajar y cierre del formulario.
+  // Reglas: nunca dos escenas a la vez; cada escena sale una vez por visita a su sección
+  // (se vuelve a armar cuando la sección sale de pantalla); si una espera turno y cuando le toca
+  // ya no corresponde, se descarta.
+  (function(){
+    function $(id){return document.getElementById(id)}
+    var quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var form=$('form'),gracias=$('gracias'),festejo=$('festejo'),botonNo=document.querySelector('.op.no');
+    function enviado(){return !gracias.classList.contains('oculto')}
+    function escribiendo(){var a=document.activeElement;return !!a&&(a.tagName==='INPUT'||a.tagName==='TEXTAREA')}
+    var usandoForm=false; // ya tocó el formulario en esta visita: la persecución no lo interrumpe
+
+    // Carril de la persecución: una franja de la pantalla que no pisa NINGÚN texto de la tarjeta (fecha, hora y lugar de la
+    // entrada incluidos), campos, botones, el aviso de error, el control de sonido ni los dibujos con escena propia
+    // (el episodio de arriba y Jerry comiendo queso del pie).
+    // Solo si el episodio de arriba ya casi no se ve (así no hay dos Tom corriendo a la vez). Sin carril, espera.
+    // Solo arranca con la página QUIETA (200 ms sin scroll y sin dedo apoyado): en iPhone la inercia sigue moviendo la página
+    // un rato después de soltar, y la franja calculada al arrancar quedaba encima de los campos.
+    var pasada=$('pasada'),episodio=$('escena'),finQueso=$('finQueso'),ctl=$('ctlSonido'),carril=null;
+    function rectsAEvitar(conControl){
+      var r=window.timoNoTapar().map(function(x){return x.r});
+      r.push(episodio.getBoundingClientRect(),finQueso.getBoundingClientRect());
+      if(conControl&&ctl&&!ctl.hidden&&!ctl.classList.contains('apartado'))r.push(ctl.getBoundingClientRect());
+      return r;
+    }
+    // Tamaño de los corredores: a escala 1 Tom mide 176 × 74 px, pisa a 10 px del fondo de la capa y con el salto (12 px)
+    // y la inclinación (±3°) llega a 88,2 px × escala + 12 px. La capa mide eso + 3 px de aire.
+    // Entre los textos de la tarjeta los huecos son de 70 a 95 px: se achican para caber, nunca por debajo de 0,6.
+    var ESC_MIN=.6;
+    function altoPara(s){return Math.ceil(88.2*s+15)}
+    function buscarCarril(){
+      var ep=episodio.getBoundingClientRect(),H=window.innerHeight;
+      if(Math.min(ep.bottom,H)-Math.max(ep.top,0)>ep.height*.15)return null;
+      // su lugar de siempre (fija al pie de la pantalla, respetando el borde seguro del iPhone) marca el tope de abajo
+      pasada.classList.remove('pegada');pasada.style.top='';pasada.style.height='';
+      var tope=pasada.getBoundingClientRect().bottom;
+      // tramos libres de la pantalla: de 0 al tope, menos cada cosa a evitar con 8 px de aire arriba y abajo
+      var libres=[[0,tope]];
+      rectsAEvitar(true).forEach(function(r){
+        var a=r.top-8,b=r.bottom+8,n=[];
+        libres.forEach(function(t){if(b<=t[0]||a>=t[1])n.push(t);else{if(a>t[0])n.push([t[0],a]);if(b<t[1])n.push([b,t[1]])}});
+        libres=n;
+      });
+      // el tramo donde entran más grandes; si dos dan casi lo mismo, el más bajo. Corren apoyados en el piso del tramo.
+      var mejor=null;
+      libres.forEach(function(t){
+        var s=Math.min(1,(t[1]-t[0]-16)/88.2);if(s<ESC_MIN)return;
+        if(!mejor||s>mejor.s+.04||(s>mejor.s-.04&&t[1]>mejor.piso))mejor={s:s,piso:t[1]};
+      });
+      if(!mejor)return null;
+      var alto=altoPara(mejor.s);
+      return {top:Math.round(mejor.piso-alto),alto:alto,s:mejor.s};
+    }
+    var ultimoScroll=-1e9,dedo=false;
+    function paginaQuieta(){return !dedo&&performance.now()-ultimoScroll>=200}
+    // mientras corren: la franja va pegada a la página, así que el scroll no le mete textos adentro. Si igual algo entra
+    // (la página cambió de tamaño), se esfuman rápido. El control de sonido no cuenta acá: va por encima y no tapa textos.
+    function vigilarPasada(){
+      if(actual!=='persecucion'||pasada.classList.contains('fuera'))return;
+      var p=pasada.getBoundingClientRect();
+      var choca=rectsAEvitar(false).some(function(r){return r.bottom>p.top+4&&r.top<p.bottom-4&&r.right>0&&r.left<window.innerWidth});
+      if(!choca){requestAnimationFrame(vigilarPasada);return}
+      pasada.classList.add('fuera');
+      document.dispatchEvent(new CustomEvent('timo:escena',{detail:{n:'persecucion',estado:'huye'}}));
+      setTimeout(function(){if(actual==='persecucion')terminar();pasada.classList.remove('fuera')},140);
+    }
+
+    // corte = parte de abajo de la pantalla que no cuenta; parte = cuánto de la sección tiene que verse
+    var escenas={
+      persecucion:{raiz:pasada,zona:{el:$('secForm'),corte:.22,parte:.5},
+        vale:function(){return !enviado()&&!usandoForm&&!escribiendo()&&paginaQuieta()&&(carril=buscarCarril())!==null},
+        antes:function(r){ // la duración acompaña el ancho: misma velocidad en cualquier pantalla
+          var dj=Math.min(2.2,Math.max(1.15,((window.innerWidth||390)+220)/470));
+          r.style.setProperty('--dj',dj.toFixed(2)+'s');r.style.setProperty('--dt',(dj*1.08).toFixed(2)+'s');
+          // pegada a la página: el «top» pasa a ser de la página (el hueco elegido + lo bajado hasta acá)
+          r.style.setProperty('--pe',carril.s.toFixed(3));r.style.height=carril.alto+'px';
+          r.classList.add('pegada');r.style.top=Math.round(carril.top+(window.pageYOffset||0))+'px';
+        }},
+      espia:{raiz:$('espia'),zona:{el:document.querySelector('.boleto'),corte:.26,parte:.95}},
+      queso:{raiz:$('finQueso'),zona:{el:$('finQueso'),corte:.06,parte:.9}},
+      festejo:{raiz:festejo,vale:enviado}
+    };
+    var alBajar=['persecucion','espia','queso'];
+
+    function visto(el,hasta){var r=el.getBoundingClientRect();return {alto:r.height,px:Math.min(r.bottom,hasta)-Math.max(r.top,0)}}
+    function enZona(z){var hasta=window.innerHeight*(1-z.corte),v=visto(z.el,hasta);return v.px>0&&v.px>=Math.min(v.alto,hasta)*z.parte-1}
+    function casiNoSeVe(z){return visto(z.el,window.innerHeight).px<window.innerHeight*.12}
+    function corresponde(n){var e=escenas[n];return (!e.vale||e.vale())&&(!e.zona||enZona(e.zona))}
+
+    // avisa cuando terminan las animaciones de la escena (las que no son infinitas); tope de 4 s por las dudas
+    function alTerminar(raiz,listo){
+      var tope=setTimeout(listo,4000);
+      if(!raiz.getAnimations)return;
+      var fin=raiz.getAnimations({subtree:true})
+        .filter(function(a){return a.effect&&a.effect.getComputedTiming().iterations!==Infinity})
+        .map(function(a){return a.finished});
+      if(fin.length)Promise.all(fin).then(function(){clearTimeout(tope);listo()},function(){});
+    }
+
+    // ---- director: una escena por vez ----
+    var actual=null,turno=0,espera=[],armada={persecucion:true,espia:true,queso:true};
+    function pedir(n){ // true = salió o quedó esperando turno
+      if(actual){if(actual!==n&&espera.indexOf(n)<0)espera.push(n);return true}
+      if(!corresponde(n))return false;
+      var e=escenas[n],r=e.raiz,mio=++turno;
+      actual=n;if(e.antes)e.antes(r);
+      r.classList.remove('play');void r.offsetWidth;r.classList.add('play');
+      alTerminar(r,function(){if(mio===turno)terminar()});
+      if(n==='persecucion')requestAnimationFrame(vigilarPasada);
+      // aviso para el sonido (cada escena trae sus efectos, sincronizados con este arranque)
+      document.dispatchEvent(new CustomEvent('timo:escena',{detail:{n:n,raiz:r,estado:'empieza'}}));
+      return true;
+    }
+    function cortar(){ // saca la escena en curso: vuelve a su pose de reposo (la persecución se oculta)
+      if(!actual)return;
+      var n=actual;
+      escenas[actual].raiz.classList.remove('play');actual=null;turno++;
+      if(n==='persecucion'){pasada.classList.remove('pegada');pasada.style.top=''} // vuelve a su lugar fijo (oculta)
+      document.dispatchEvent(new CustomEvent('timo:escena',{detail:{n:n,estado:'termina'}}));
+    }
+    function terminar(){ // fin de la escena: pasa la siguiente que espera, si todavía corresponde
+      cortar();
+      while(espera.length){var n=espera.shift();if(pedir(n))return;armada[n]=true}
+    }
+
+    // cierre de la pantalla de gracias: «Sí» = festejo con confeti; «No» = Jerry saluda, sin confeti.
+    // Tiene prioridad: corta la escena que esté en curso.
+    new MutationObserver(function(){
+      if(enviado()){
+        festejo.classList.toggle('no',botonNo.getAttribute('aria-pressed')==='true');
+        if(!quieto){cortar();pedir('festejo')}
+      }else if(actual==='festejo')terminar();
+      else festejo.classList.remove('play');
+    }).observe(gracias,{attributes:true,attributeFilter:['class']});
+
+    if(quieto)return;
+
+    // si empieza a completar el formulario, la persecución no corresponde (y si está pasando, se va)
+    function tocarForm(){usandoForm=true;if(actual==='persecucion')terminar()}
+    form.addEventListener('focusin',tocarForm);form.addEventListener('click',tocarForm);
+
+    // al moverse la página: arma las escenas cuya sección salió y lanza la que entró en su zona
+    function revisar(){
+      alBajar.forEach(function(n){
+        var z=escenas[n].zona;
+        if(casiNoSeVe(z)){armada[n]=true;if(n==='persecucion')usandoForm=false}
+        else if(armada[n]&&enZona(z)&&pedir(n))armada[n]=false;
+      });
+    }
+    var pendiente=false,tQuieta=0;
+    function alMover(){if(!pendiente){pendiente=true;requestAnimationFrame(function(){pendiente=false;revisar()})}}
+    // cuando la página se queda quieta (200 ms sin scroll) se vuelve a revisar: ahí sí puede arrancar la persecución
+    function marcarMovimiento(){ultimoScroll=performance.now();clearTimeout(tQuieta);tQuieta=setTimeout(alMover,230)}
+    addEventListener('scroll',function(){marcarMovimiento();alMover()},{passive:true});
+    addEventListener('touchstart',function(){dedo=true},{passive:true});
+    addEventListener('touchend',function(){dedo=false;marcarMovimiento()},{passive:true});
+    addEventListener('touchcancel',function(){dedo=false;marcarMovimiento()},{passive:true});
+    addEventListener('resize',alMover);alMover();
+
+    // la pantalla del episodio se congela cuando no se ve (ahorra batería)
+    if('IntersectionObserver' in window){
+      var pant=$('pantalla');
+      new IntersectionObserver(function(es){es.forEach(function(e){pant.classList.toggle('pausa',!e.isIntersecting)})}).observe(pant);
+    }
+  })();
+</script>
+<script>
+  // Las respuestas van al formulario de Google de Javier ("Cumple de Timoteo - Confirmaciones")
+  const GOOGLE_FORM='https://docs.google.com/forms/d/e/1FAIpQLSdFx_WYW4hVTOkDPuvseDXnN0L4avO-3qU2sHJOQPGKATic3A/formResponse';
+  const CAMPOS={nombre:'entry.1850437198',vienen:'entry.723913513',ninos:'entry.798109568',adultos:'entry.2045401585',nota:'entry.1885747323'};
+
+  const $=id=>document.getElementById(id);
+  const si=document.querySelector('.op.si'),no=document.querySelector('.op.no'),bloque=$('bloqueCuantos');
+  let vienen=null;
+  function elegir(v){vienen=v;error.classList.add('oculto');si.setAttribute('aria-pressed',v);no.setAttribute('aria-pressed',!v);bloque.classList.toggle('oculto',!v);$('bloqueNota').classList.toggle('oculto',!v)}
+  si.onclick=()=>elegir(true);no.onclick=()=>elegir(false);
+  const [outNinos,outAdultos]=document.querySelectorAll('.cont output');
+  document.querySelectorAll('.cont').forEach(c=>{const o=c.querySelector('output');
+    c.querySelectorAll('button').forEach(b=>b.onclick=()=>{o.value=o.textContent=Math.max(0,+o.textContent+ +b.dataset.d);error.classList.add('oculto')})});
+
+  const cuerpo=document.querySelector('.form-cuerpo'),gracias=$('gracias'),error=$('error'),btn=$('btnEnviar'),nombre=$('nombre');
+  function mostrarError(t){error.textContent=t;error.classList.remove('oculto')}
+  nombre.oninput=()=>{nombre.classList.remove('mal');error.classList.add('oculto')};
+
+  $('form').onsubmit=async e=>{
+    e.preventDefault();
+    const n=nombre.value.trim(), ni=+outNinos.textContent, ad=+outAdultos.textContent;
+    if(!n){nombre.classList.add('mal');nombre.focus();return mostrarError('Poné el nombre del invitado así sabemos quién viene.')}
+    if(vienen===null)return mostrarError('Tocá «¡Sí, vamos!» o «No podemos».');
+    if(vienen&&ni+ad===0)return mostrarError('Sumá al menos un niño o un adulto con el botón +.');
+    const datos=new URLSearchParams();
+    datos.append(CAMPOS.nombre,n);datos.append(CAMPOS.vienen,vienen?'Sí':'No');
+    datos.append(CAMPOS.ninos,vienen?ni:0);datos.append(CAMPOS.adultos,vienen?ad:0);
+    datos.append(CAMPOS.nota,vienen?$('nota').value.trim():'');
+    const va=vienen; // lo que se mandó (aunque toquen Sí/No mientras dice «Enviando…»)
+    btn.disabled=true;btn.textContent='Enviando…';
+    try{
+      await fetch(GOOGLE_FORM,{method:'POST',mode:'no-cors',body:datos});
+      elegir(va);
+      $('graciasTit').textContent=va?'¡Nos vemos en el cumple!':'¡Gracias por avisar!';
+      $('graciasTxt').textContent=va?`Anotamos a ${n}: ${ni} ${ni===1?'niño':'niños'} y ${ad} ${ad===1?'adulto':'adultos'}. ¡Timo los espera!`:`Anotamos que ${n} no puede venir. ¡Lo vamos a extrañar!`;
+      cuerpo.classList.add('oculto');gracias.classList.remove('oculto');
+      gracias.scrollIntoView({behavior:'smooth',block:'center'});
+    }catch(_){mostrarError('No se pudo enviar. Revisá tu conexión a internet y probá de nuevo.')}
+    finally{btn.disabled=false;btn.textContent='Enviar confirmación'}
+  };
+  $('otra').onclick=()=>{$('form').reset();nombre.value='';error.classList.add('oculto');nombre.classList.remove('mal');outNinos.textContent=1;outAdultos.textContent=1;vienen=null;si.setAttribute('aria-pressed',false);no.setAttribute('aria-pressed',false);bloque.classList.add('oculto');$('bloqueNota').classList.add('oculto');gracias.classList.add('oculto');cuerpo.classList.remove('oculto')};
+</script>
+<script>
+/* =====================================================================================
+   SONIDO DE LA FUNCIÓN
+   - Precarga: apenas carga la página (telón cerrado, sin ningún toque) se bajan TODOS los sonidos, una sola vez cada uno:
+     primero los de la apertura (telón, ta-da, cortina MGM) y, cuando llegaron, el resto en el orden en que se usan. Cada
+     uno se decodifica apenas llega (OfflineAudioContext: no necesita toque, no suena ni avisa nada).
+   - Los celulares no dejan sonar nada sin un toque: el toque que abre el telón («timo:abrir») crea el AudioContext y lo
+     destraba DENTRO de ese mismo gesto. Si la apertura ya está lista, el telón se abre en ese mismo instante; si no (red
+     lenta), la entrada espera como mucho 2,5 s con el ▶ girando. Cuando el telón empieza a moverse («timo:telon») suenan
+     juntos el telón, el ta-da y la música; lo que llegue tarde entra desde donde iría (lo que ya pasó no suena).
+     Cualquier toque o tecla siguiente vuelve a destrabar si el audio quedó trabado (iPhone a veces lo pide).
+   - Música: la cortina clásica (tema MGM, 18 s) corta sobre un golpe a la persecución, que queda en loop de 30,000 s con
+     fundido cruzado de 150 ms justo antes de un golpe (dos fuentes que se enciman: la unión no se oye).
+   - Efectos: se decodifican a memoria y se programan con el reloj de audio, leyendo el reloj REAL de la animación maestra
+     (la cortinita de la escena, 14 s por vuelta). Si la escena se pausa fuera de pantalla, el reloj no avanza y no suena nada.
+   - Mezcla: música → «ducking» → compresor suave → volumen general. El ducking es liviano: baja 2,5 a 3 dB (4 en los golpes
+     fuertes) solo mientras dura el cuerpo del efecto (0,2 a 0,8 s) y vuelve en ~0,1 s; los efectos agudos (silbato, boing,
+     campanita, zip) no la bajan. Los pasajes suaves del loop suben 3 dB. Así la música se oye clara todo el tiempo.
+   - Pestaña oculta = todo en pausa (se suspende el audio); al volver sigue si estaba activado.
+   - La elección (sí/no) se recuerda solo en esta visita (sessionStorage).
+   ===================================================================================== */
+(function(){
+  var AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC||!window.fetch)return;
+  function $(id){return document.getElementById(id)}
+  var raiz=document.documentElement,quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // modo de prueba: solo con ?sonido=debug en la dirección (registro de lo que sonó + mensajes en la consola).
+  // En la invitación publicada no escribe nada en la consola ni guarda nada.
+  var DEBUG=/[?&]sonido=debug/.test(location.search);
+  var registro=DEBUG?(window.__sonido=[]):null;
+  function anotar(fila){if(registro)registro.push(fila)}
+  if(DEBUG)window.__sonidoInterno={buf:function(){return buf},ctx:function(){return ctx},vivos:function(){return vivos},duck:function(){return duck&&duck.gain.value}};
+  // arranque (solo en modo de prueba): cuándo se pidió y llegó cada archivo, el toque, el telón, la función y el instante
+  // en que se programa cada sonido (con la hora en que se oye, en el reloj de performance.now())
+  var arranque=DEBUG?(window.__sonidoArranque=[]):null;
+  function marcar(fila){if(arranque){fila.t=Math.round(performance.now()*10)/10;arranque.push(fila)}}
+  function log(){if(DEBUG)try{console.debug.apply(console,['[sonido]'].concat([].slice.call(arguments)))}catch(e){}}
+
+  // ---------- archivos ----------
+  var DIR='sonido/';
+  var APERTURA='musica_apertura',LOOP='musica_persecucion';
+  var ABRE=['cortina',APERTURA]; // lo que suena al abrirse el telón: se trae primero
+  // el resto, en el orden en que se usa: los efectos del episodio, la persecución (entra a los 18 s) y los de más abajo
+  var RESTO=['corrida','silbato','golpe','boing','ladrido','grito','zip','risita','campanita','bonk','cohete','cornetita',LOOP,'mordisco','yay','xilofono'];
+  // cortes de la música (medidos en sonido_work2/build/musica_cortes.json)
+  var MUS={L:30,PRE:.2,XF:.15,CORTE:17.978,ENTRADA:.27,XC:.12,
+    // pasajes suaves del loop (segundos del archivo; medidos: −27 a −31 dB contra −21 dB de mediana) y cuánto suben ahí (+3 dB)
+    SUAVES:[[2.1,5.3],[7.55,9.15],[11.55,12.2],[27.1,27.7]],LEV:1.41};
+  var VOL={musica:.66,efectos:.9}; // música clara y presente; los efectos adelante sin tapar (mezcla medida en sonido_work2/sim_mezcla.py)
+
+  // ---------- estado ----------
+  var ctx=null,maestroGain,comp,musBus,duck,sfxBus;
+  var bytes={},buf={},decod={};
+  var on=false,iniciado=false,gestoTrabado=false;
+  var estado=null;try{estado=sessionStorage.getItem('timo-sonido')}catch(e){}
+  function guardar(v){estado=v;try{sessionStorage.setItem('timo-sonido',v)}catch(e){}}
+
+  function traer(n){ // cada archivo se pide UNA vez (solo se vuelve a pedir si falló)
+    if(!bytes[n]){
+      var pre=window.timoPrecarga;
+      if(pre&&pre[n]){bytes[n]=pre[n];delete pre[n];marcar({ev:'pide',n:n,desde:'cabecera'})} // ya lo había pedido la cabecera
+      else{
+        marcar({ev:'pide',n:n});
+        bytes[n]=fetch(DIR+n+'.mp3',{priority:ABRE.indexOf(n)>=0?'high':'low'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.arrayBuffer()});
+      }
+      bytes[n].then(function(ab){marcar({ev:'llego',n:n,kb:Math.round(ab.byteLength/1024)})},function(){delete bytes[n]});
+    }
+    return bytes[n];
+  }
+  // duración real de cada archivo (medida al armarlos). Si el navegador no recorta el relleno del codificador MP3,
+  // el archivo decodificado sale más largo: se saltea ese relleno (576+529 muestras) para no perder la sincronía.
+  var DUR={"boing":0.74,"bonk":0.86,"campanita":0.9,"cohete":2.7,"cornetita":0.8,"corrida":1.72,"cortina":1.3,"golpe":0.58,"grito":1.93,"ladrido":0.97,"mordisco":0.37,"musica_apertura":18.018,"musica_persecucion":30.22,"risita":1.36,"silbato":1.34,"tada":1.45,"telon":1.9,"xilofono":1.1,"yay":2.1,"zip":0.36};
+  function inicio(n,b){var extra=b.duration-(DUR[n]||b.duration);return extra>.015?1105/44100:0}
+  // antes del toque se decodifica con un OfflineAudioContext (no necesita permiso ni deja avisos en la consola);
+  // después, con el contexto de verdad. Un AudioBuffer sirve en cualquier contexto.
+  var OAC=window.OfflineAudioContext||window.webkitOfflineAudioContext,previo;
+  function decodificador(){
+    if(ctx)return ctx;
+    if(previo===undefined){previo=null;if(OAC)try{previo=new OAC(1,1,48000)}catch(e){try{previo=new OAC(1,1,44100)}catch(e2){}}}
+    return previo;
+  }
+  function listo(n){
+    if(buf[n])return Promise.resolve(buf[n]);
+    if(!decod[n]){
+      var d=decodificador();if(!d)return Promise.reject(new Error('todavía sin audio'));
+      decod[n]=traer(n).then(function(ab){
+        return new Promise(function(ok,mal){var r=d.decodeAudioData(ab.slice(0),ok,mal);if(r&&r.catch)r.catch(function(){})}); // copia: si falla, se reintenta
+      }).then(function(b){buf[n]={b:b,ini:inicio(n,b)};marcar({ev:'listo',n:n});if(buf[n].ini)log(n,': el navegador deja el relleno del MP3, se saltea');return buf[n]});
+      decod[n].catch(function(e){log('no se pudo cargar',n,e&&e.message);delete decod[n]});
+    }
+    return decod[n];
+  }
+  function precargar(lista){lista.forEach(function(n){listo(n).catch(function(){})})}
+  // precarga, ya mismo (sin esperar ningún toque): primero la apertura; cuando llegó (o falló), todo lo demás.
+  // Así, con red lenta, lo demás no le quita velocidad a lo que suena primero.
+  var cadena=null;
+  function cargarTodo(){
+    if(!cadena)cadena=Promise.all(ABRE.map(function(n){precargar([n]);return traer(n).catch(function(){})}))
+      .then(function(){precargar(RESTO)});
+    else cadena.then(function(){precargar(ABRE.concat(RESTO))}); // reintenta lo que haya fallado (lo que está no se vuelve a pedir)
+  }
+  cargarTodo();
+
+  // ---------- motor ----------
+  function crear(){
+    try{ctx=new AC({latencyHint:'interactive'})}catch(e){ctx=new AC()}
+    comp=ctx.createDynamicsCompressor();
+    comp.threshold.value=-10;comp.knee.value=8;comp.ratio.value=5;comp.attack.value=.004;comp.release.value=.2;
+    maestroGain=ctx.createGain();maestroGain.gain.value=0;
+    musBus=ctx.createGain();musBus.gain.value=VOL.musica;
+    duck=ctx.createGain();
+    sfxBus=ctx.createGain();sfxBus.gain.value=VOL.efectos;
+    musBus.connect(duck);duck.connect(comp);sfxBus.connect(comp);comp.connect(maestroGain);maestroGain.connect(ctx.destination);
+    ctx.onstatechange=function(){log('audio',ctx.state);marcar({ev:'audio',estado:ctx.state});revisarAudio()};
+  }
+  function destrabar(){ // dentro del toque: iOS necesita que algo suene en ese mismo momento
+    try{var r=ctx.resume();if(r&&r.catch)r.catch(function(){})}catch(e){}
+    try{var s=ctx.createBufferSource();s.buffer=ctx.createBuffer(1,1,22050);s.connect(ctx.destination);s.start(0)}catch(e){}
+    try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){} // iPhone: que suene aunque esté en silencio (lo pidió tocando)
+  }
+  // El AudioContext se arma apenas se ve el telón y queda suspendido (sin un toque no suena nada): así el toque solo
+  // tiene que destrabarlo. Armarlo recién en el toque cuesta hasta ~0,1 s la primera vez (el navegador prepara el audio)
+  // y eso atrasaría el telón. Si en esta visita lo silenció, no se arma.
+  function crearTemprano(){
+    if(ctx||estado==='no')return;
+    try{crear();marcar({ev:'contexto',estado:ctx.state})}catch(e){ctx=null;log('no se pudo armar el audio',e&&e.message)}
+  }
+  requestAnimationFrame(function(){setTimeout(crearTemprano,30)});
+  // hora del reloj de audio que se OYE en el instante p (performance.now): descuenta la latencia de salida
+  function audioEn(p){
+    var ts=ctx.getOutputTimestamp&&ctx.getOutputTimestamp();
+    if(ts&&ts.performanceTime>0&&ts.contextTime>0)return ts.contextTime+(p-ts.performanceTime)/1000;
+    return ctx.currentTime+(p-performance.now())/1000-(ctx.outputLatency||ctx.baseLatency||0);
+  }
+  // al revés: en qué instante (performance.now) se va a oír lo que está programado para la hora t del reloj de audio.
+  // Solo para el registro de prueba; null si el audio todavía no corre.
+  function oidoEn(t){
+    if(!ctx||ctx.state!=='running')return null;
+    var ts=ctx.getOutputTimestamp&&ctx.getOutputTimestamp();
+    if(ts&&ts.performanceTime>0)return Math.round((ts.performanceTime+(t-ts.contextTime)*1000)*10)/10;
+    return Math.round((performance.now()+(t-ctx.currentTime+(ctx.outputLatency||ctx.baseLatency||0))*1000)*10)/10;
+  }
+  function programado(n,t,off){if(arranque)marcar({ev:'programa',n:n,audio:+t.toFixed(4),ahora:+ctx.currentTime.toFixed(4),desde:+(off||0).toFixed(3),oido:oidoEn(t),estado:ctx.state})}
+  function fundido(param,t,d,sube,g){ // curva de igual potencia (sin bache de volumen en los cruces)
+    var n=32,c=new Float32Array(n);
+    for(var i=0;i<n;i++){var u=i/(n-1);c[i]=(sube?Math.sin(u*Math.PI/2):Math.cos(u*Math.PI/2))*(g||1)}
+    param.setValueCurveAtTime(c,t,d);
+  }
+
+  // ---------- ducking: la música baja un poco mientras suena un efecto y vuelve sola ----------
+  var tramos=[];
+  function agacharse(ini,fin,db){
+    var t={s:ini,e:fin,g:Math.pow(10,db/20)};tramos.push(t);reprogramarDuck();return t;
+  }
+  function reprogramarDuck(){
+    var p=duck.gain,now=ctx.currentTime;
+    tramos=tramos.filter(function(t){return t.e>now}).sort(function(a,b){return a.s-b.s});
+    var marcas=[];tramos.forEach(function(t){marcas.push(t.s,t.e)});marcas.sort(function(a,b){return a-b});
+    p.cancelScheduledValues(now);p.setValueAtTime(p.value,now);
+    function nivel(m){var g=1;tramos.forEach(function(t){if(t.s<=m+1e-4&&t.e>m+1e-4)g=Math.min(g,t.g)});return g}
+    var antes=nivel(now);p.setTargetAtTime(antes,now,antes<1?.02:.1); // desde ya: el nivel que corresponde (si no suena nada, vuelve a 1)
+    marcas.forEach(function(m){ // nivel a partir de cada marca = el más bajo de los efectos que suenan ahí
+      if(m<=now)return;
+      var g=nivel(m);
+      if(g===antes)return;antes=g;
+      p.setTargetAtTime(g,Math.max(now,g<1?m-.015:m),g<1?.02:.1); // baja en ~50 ms, vuelve en ~300 ms
+    });
+  }
+
+  // ---------- efectos ----------
+  var vivos=[]; // {s,g,t,fin,grupo}
+  function sonar(n,cuando,o){
+    o=o||{};
+    if(n.charAt(0)==='@')return sintetizar(n,cuando,o);
+    var e=buf[n];if(!e){log('todavía sin cargar:',n);return null}
+    var r=o.r||1,g=o.g==null?.8:o.g,now=ctx.currentTime;
+    var t=Math.max(cuando,now+.004),tarde=t-cuando;
+    var off=e.ini+(o.off||0),dur=o.dur||(e.b.duration-off);
+    if(tarde>0&&tarde<.12&&o.recortable){off+=tarde*r;dur-=tarde*r} // llegó apenas tarde: arranca desde donde iría
+    if(dur<=.02)return null;
+    var s=ctx.createBufferSource();s.buffer=e.b;s.playbackRate.value=r;
+    var v=ctx.createGain(),fin=t+dur/r;
+    v.gain.setValueAtTime(0,t);v.gain.linearRampToValueAtTime(g,t+.006);          // bordes de 6 a 10 ms: sin clics
+    v.gain.setValueAtTime(g,Math.max(t+.006,fin-.01));v.gain.linearRampToValueAtTime(0,fin);
+    s.connect(v);v.connect(sfxBus);s.start(t,off,dur);s.stop(fin+.02);programado(n,t,off);
+    var vivo={s:s,g:v,t:t,fin:fin,grupo:o.grupo||''};vivos.push(vivo);
+    s.onended=function(){var i=vivos.indexOf(vivo);if(i>=0)vivos.splice(i,1)};
+    // ducking corto: solo mientras dura el «cuerpo» del efecto (0,6 s salvo que la tabla diga otra cosa); la música vuelve sola en ~0,1-0,3 s
+    if(o.duck)vivo.tramo=agacharse(t,t+Math.min(o.hold||Math.min(dur/r,.6),1.6),o.duck);
+    return vivo;
+  }
+  function callar(grupo,rapido){ // corta lo programado de un grupo con un fundido corto (y la música deja de agacharse por él)
+    var now=ctx.currentTime,f=rapido||.08,cambio=false;
+    vivos.slice().forEach(function(v){
+      if(grupo&&v.grupo!==grupo)return;
+      try{
+        if(v.t>now+.01){v.s.stop(0)}
+        else{v.g.gain.cancelScheduledValues(now);v.g.gain.setValueAtTime(v.g.gain.value,now);v.g.gain.linearRampToValueAtTime(0,now+f);v.s.stop(now+f+.02)}
+      }catch(e){}
+      if(v.tramo){var i=tramos.indexOf(v.tramo);if(i>=0){if(v.t>now+.01)tramos.splice(i,1);else v.tramo.e=Math.min(v.tramo.e,now+f)}cambio=true}
+    });
+    if(cambio)reprogramarDuck();
+  }
+  // sonidos armados en el momento (no pesan nada): pizzicato sigiloso (cuerda pulsada) y blips de interfaz
+  // La cuerda se arma UNA vez por nota y ya sale filtrada y con su envolvente adentro del buffer:
+  // no hay ningún filtro vivo en el audio (nada que automatizar, nada que se pueda volver inestable).
+  var pizz={};
+  function cuerda(f){ // Karplus-Strong: ruido que se filtra en un bucle = cuerda pulsada
+    var k=Math.round(f);if(pizz[k])return pizz[k];
+    var sr=ctx.sampleRate,n=Math.round(sr*.42),b=ctx.createBuffer(1,n,sr),d=b.getChannelData(0),P=Math.round(sr/f),i;
+    var semilla=k*7919+13;function azar(){semilla=(semilla*16807)%2147483647;return semilla/1073741823.5-1} // siempre el mismo timbre
+    for(i=0;i<P;i++)d[i]=azar();
+    d[P]=.5*d[0]*.994;
+    for(i=P+1;i<n;i++)d[i]=.5*(d[i-P]+d[i-P-1])*.994;
+    // pasabajos de 2 polos a 2,6 kHz (le saca lo metálico en el parlante del celular), calculado acá una sola vez
+    var w=2*Math.PI*2600/sr,al=Math.sin(w)/(2*Math.SQRT1_2),cw=Math.cos(w),a0=1+al;
+    var b0=(1-cw)/2/a0,b1=(1-cw)/a0,a1=-2*cw/a0,a2=(1-al)/a0,x1=0,x2=0,y1=0,y2=0,x,y;
+    for(i=0;i<n;i++){x=d[i];y=b0*x+b1*x1+b0*x2-a1*y1-a2*y2;x2=x1;x1=x;y2=y1;y1=y;d[i]=y}
+    // envolvente: ataque de 4 ms, se sostiene 0,12 s, se apaga y termina en cero exacto (sin clic al cortar)
+    var at=Math.round(sr*.004),sost=Math.round(sr*.12),cola=Math.round(sr*.012);
+    for(i=0;i<n;i++){var e=i<at?i/at:(i<sost?1:Math.exp(-(i-sost)/(sr*.06)));if(i>n-cola)e*=(n-i)/cola;d[i]*=e}
+    return pizz[k]=b;
+  }
+  function sintetizar(n,cuando,o){
+    var t=Math.max(cuando,ctx.currentTime+.004),g=o.g||.3,v=ctx.createGain(),s;
+    if(n==='@pizz'){
+      s=ctx.createBufferSource();s.buffer=cuerda(o.f||330);
+      v.gain.value=g;
+      s.connect(v);s.start(t);
+    }else{ // @plop @pop @tic @uy: seno con barrido de tono
+      s=ctx.createOscillator();s.type=o.tipo||'sine';
+      var a=o.de||600,b=o.a||900,d=o.d||.07;
+      s.frequency.setValueAtTime(a,t);s.frequency.exponentialRampToValueAtTime(b,t+d);
+      v.gain.setValueAtTime(0,t);v.gain.linearRampToValueAtTime(g,t+.006);v.gain.setTargetAtTime(0,t+d*.6,d*.35);
+      s.connect(v);s.start(t);s.stop(t+d+.25);
+    }
+    v.connect(sfxBus);
+    var vivo={s:s,g:v,t:t,fin:t+.45,grupo:o.grupo||''};vivos.push(vivo);
+    s.onended=function(){var i=vivos.indexOf(vivo);if(i>=0)vivos.splice(i,1)};
+    return vivo;
+  }
+
+  // ---------- música: apertura + persecución en loop con cruce ----------
+  var mus={vueltas:[],T0:null,prox:0,esperaLoop:false};
+  function nuevaVuelta(T,desde,entrada){ // una pasada del archivo del loop; T = cuándo empezaría el archivo desde 0
+    var e=buf[LOOP],s=ctx.createBufferSource(),v=ctx.createGain(),L=MUS.L,now=ctx.currentTime;
+    s.buffer=e.b;s.connect(v);v.connect(musBus);
+    var t=Math.max(now+.01,T+desde);
+    var fi=entrada?t:T+MUS.PRE-MUS.XF,fd=entrada||MUS.XF;
+    if(fi<now+.02){fd=Math.max(.05,fd-(now+.02-fi));fi=now+.02} // nunca una curva en el pasado (se pisaría con el valor inicial)
+    var fo=Math.max(fi+fd+.01,T+L+MUS.PRE-MUS.XF);
+    v.gain.setValueAtTime(0,now);
+    fundido(v.gain,fi,fd,true);
+    fundido(v.gain,fo,MUS.XF,false);
+    // pasajes suaves del archivo: ahí la música sube 3 dB (rampas de 0,15 s), así se sigue oyendo debajo de los efectos.
+    // Siempre entre los dos fundidos (una curva no admite otros cambios adentro); si algo falla, la música sigue igual.
+    MUS.SUAVES.forEach(function(p){
+      var a=Math.max(T+p[0],now+.02,fi+fd+.02),b=Math.min(T+p[1],fo-.02);if(b-a<.4)return;
+      try{v.gain.setValueAtTime(1,a);v.gain.linearRampToValueAtTime(MUS.LEV,a+.15);
+        v.gain.setValueAtTime(MUS.LEV,b-.15);v.gain.linearRampToValueAtTime(1,b)}catch(e){log('pasaje suave sin subir',e&&e.message)}
+    });
+    s.start(t,e.ini+(t-T),L+MUS.PRE+.01-(t-T));programado(LOOP,t,t-T);
+    mus.vueltas.push(s);s.onended=function(){var i=mus.vueltas.indexOf(s);if(i>=0)mus.vueltas.splice(i,1)};
+  }
+  function arrancarLoop(T,desde,entrada){ // T = inicio virtual del archivo
+    mus.T0=T;mus.prox=1;nuevaVuelta(T,desde,entrada);
+    log('música: persecución en loop desde',(T+desde).toFixed(3));
+  }
+  // desde = segundos que ya pasaron desde que se abrió el telón (red lenta: la cortina MGM llegó tarde). Entra desde
+  // donde iría, con un fundido, y el corte a la persecución cae en el mismo momento que si hubiera llegado a tiempo.
+  function arrancarMusica(cuando,conApertura,fadeIn,desde){
+    cuando=Math.max(cuando,ctx.currentTime+.02);
+    desde=desde>.12?desde:0;
+    if(conApertura&&buf[APERTURA]&&desde<MUS.CORTE-MUS.XC-.8){
+      var e=buf[APERTURA],s=ctx.createBufferSource(),v=ctx.createGain(),corte=cuando-desde+MUS.CORTE-MUS.XC;
+      s.buffer=e.b;s.connect(v);v.connect(musBus);
+      v.gain.setValueAtTime(0,ctx.currentTime);v.gain.setValueAtTime(0,cuando);v.gain.linearRampToValueAtTime(1,cuando+(desde?.5:fadeIn));
+      fundido(v.gain,corte,MUS.XC,false);
+      s.start(cuando,e.ini+desde);s.stop(corte+MUS.XC+.05);programado(APERTURA,cuando,desde);
+      log('música: cortina MGM a las',cuando.toFixed(3),desde?'(llegó tarde: entra en el segundo '+desde.toFixed(2)+')':'','→ corte a la persecución',(corte+MUS.XC).toFixed(3));
+      mus.corte=corte;
+      listo(LOOP).then(function(){
+        if(ctx.currentTime<corte-.05)arrancarLoop(corte-(MUS.ENTRADA-MUS.XC),MUS.ENTRADA-MUS.XC,MUS.XC);
+        else arrancarLoop(ctx.currentTime+.05-MUS.PRE,MUS.PRE,.8); // llegó tarde (red lenta): entra con fundido
+      },function(){});
+    }else{
+      listo(LOOP).then(function(){arrancarLoop(Math.max(cuando,ctx.currentTime+.03)-MUS.PRE+.0001,MUS.PRE,fadeIn||.5)},function(){});
+    }
+  }
+  function mantenerMusica(){ // deja siempre programada la vuelta siguiente
+    if(mus.T0==null)return;
+    var Tn=mus.T0+mus.prox*MUS.L;
+    if(ctx.currentTime>Tn-4){nuevaVuelta(Tn,0,0);mus.prox++}
+  }
+
+  // ---------- episodio de la portada: tabla de momentos (ms dentro de la vuelta de 14 s) ----------
+  // 0 = arranque de la vuelta (la primera, justo cuando el telón de la entrada terminó de abrirse).
+  // Sacados de los @keyframes (porcentaje × 140 ms).
+  var EP=[
+    {t:20,   n:'cortina',  g:.6,              id:'cortinita de la escena se abre (0,7 %→6,1 %)',saltar:true},
+    {t:620,  n:'corrida',  g:.62, duck:-3, hold:.35, id:'Jerry corre a la cueva (jr 4,3 %→15,7 %)'},
+    {t:1250, n:'silbato',  g:.4, id:'Tom se tira: sube y baja (tl 7,5 %→18,2 %, cima 13,2 %)'},
+    {t:2540, n:'golpe',    g:.95, duck:-4, hold:.25, id:'¡PAF! contra la pared (paf 18,1 %→18,6 %)'},
+    {t:2700, n:'boing',    g:.5, id:'estrellitas (19,6 %→20,3 %)'},
+    {t:3440, n:'ladrido',  g:.9,  dur:.47, duck:-3, hold:.35, id:'llega Spike: ¡GUAU! (guau 24,9 %→25,6 %)'},
+    {t:3560, n:'grito',    g:.58, duck:-3, hold:.6, id:'Tom salta del susto y grita (ts 24,3 %→25,6 %)'},
+    {t:4260, n:'ladrido',  g:.72, off:.51, dur:.46, r:.96, duck:-3, hold:.35, id:'¡GUAU! otra vez (30,7 %)'},
+    {t:4630, n:'zip',      g:.6,  r:.9,       id:'Tom huye (tf 33,6 %)'},
+    {t:5450, n:'@plop',    g:.32, de:320, a:980, d:.08, id:'Jerry asoma de la cueva (puf 38,9 %→39,3 %)'},
+    {t:5600, n:'risita',   g:.58, duck:-2.5, hold:.45, id:'Jerry sale con el queso, riéndose (jq 39,4 %→41,9 %)'},
+    {t:7200, n:'campanita',g:.6, id:'se prende la vela del 6 (vela 51,6 %→52,4 %)'},
+    {t:7470, n:'campanita',g:.24, r:1.5,      id:'chispita (53,3 %→53,9 %)'},
+    {t:8360, n:'zip',      g:.55, r:.8,       id:'Tom vuelve a la carga (tc 59,9 %)'},
+    {t:9040, n:'bonk',     g:.7,  duck:-3, hold:.2, id:'nube de pelea: ¡PIM! (nube 64,3 %→65,3 %)'},
+    {t:9300, n:'golpe',    g:.5,  r:.85, duck:-3, hold:.2, id:'nube: ¡PUM!'},
+    {t:9560, n:'bonk',     g:.55, r:1.25, duck:-3, hold:.2, id:'nube: ¡PIM!'},
+    {t:9610, n:'cohete',   g:.75, duck:-3, hold:.8, id:'cohete sube y ESTALLA con el ¡FELIZ CUMPLE! (feliz 73,9 %→74,7 %, estallido a los 10 440)'},
+    {t:11300,n:'cohete',   g:.42, off:.8, r:.85, duck:-2.5, hold:.4, id:'otro fuego artificial (feliz late 80,7 %)'},
+    {t:12700,n:'cornetita',g:.5,  duck:-3, hold:.35, id:'cornetita del final (feliz late 90,7 %)'},
+    {t:12840,n:'cortina',  g:.34, r:1.1,      id:'cortinita se cierra (93,2 %→97,1 %)'}
+  ];
+  var VUELTA=14000,RETARDO=0,disparados={},saltarVuelta=null,maestra=null,escenaVista=0;
+  function buscarMaestra(){
+    var el=document.querySelector('.cortina.i');if(!el||!el.getAnimations)return null;
+    return el.getAnimations().filter(function(a){return a.animationName==='cortinaI'})[0]||null;
+  }
+  function relojEpisodio(){ // ms desde el arranque de la vuelta 0, con el reloj real de la animación
+    if(!maestra||maestra.playState==='idle')maestra=buscarMaestra();
+    var a=maestra;if(!a)return null;
+    if(a.playState!=='running')return {pausa:true};
+    var t=a.currentTime;if(t==null)return null;
+    var tl=document.timeline&&document.timeline.currentTime,corr=tl==null?0:performance.now()-tl;
+    if(!(corr>=0&&corr<100))corr=0;
+    return {c:t+corr*(a.playbackRate||1)-RETARDO};
+  }
+  var pausado=false;
+  function episodio(){
+    var r=relojEpisodio();if(!r)return;
+    if(r.pausa){
+      if(!pausado){
+        pausado=true;
+        // lo que estaba programado y todavía no sonó se vuelve a armar: al volver, la escena sigue desde donde quedó
+        // y ese efecto sale en su momento (no se pierde el grito de Tom por haber bajado justo antes)
+        var n0=ctx.currentTime;vivos.forEach(function(v){if(v.grupo==='ep'&&v.clave&&v.t>n0+.01)delete disparados[v.clave]});
+        callar('ep');log('episodio en pausa (fuera de pantalla): se cancelan los efectos programados');
+      }
+      return;
+    }
+    pausado=false;
+    if(escenaVista<.25)return;
+    var c=r.c,ahora=performance.now(),k0=Math.floor(c/VUELTA);
+    for(var k=k0;k<=k0+1;k++){
+      if(k<0)continue;
+      for(var i=0;i<EP.length;i++){
+        var q=EP[i],d=k*VUELTA+q.t-c,clave=k+':'+i;
+        if(d<-25||d>=160||disparados[clave])continue;
+        disparados[clave]=1;
+        if(q.saltar&&k===saltarVuelta)continue; // en la primera vuelta todavía suena el telón grande de la entrada
+        var P=ahora+Math.max(0,d),cuando=audioEn(P);
+        var v=sonar(q.n,cuando,{g:q.g,r:q.r,off:q.off,dur:q.dur,duck:q.duck,hold:q.hold,de:q.de,a:q.a,d:q.d,grupo:'ep',recortable:true});
+        if(v)v.clave=clave;
+        var fila={cue:q.id,sonido:q.n,tabla:q.t,vuelta:k,faltaban_ms:Math.round(d),audio:+cuando.toFixed(3),sono:!!v};
+        anotar(fila);log('cue',q.t+' ms',q.id,'| vuelta',k,'| programado para dentro de',Math.round(d),'ms');
+        if(DEBUG)(function(fila,P,cuando){setTimeout(function(){ // control: en el instante programado, ¿dónde está la animación?
+          var r2=relojEpisodio();if(!r2||r2.pausa)return;
+          var atraso=performance.now()-P;
+          fila.fase_real=Math.round(r2.c-atraso-fila.vuelta*VUELTA);fila.desfase_ms=fila.fase_real-fila.tabla;
+          fila.reloj_audio_ms=Math.round((audioEn(performance.now())-cuando)*1000-atraso);
+          log('control',fila.tabla,'→ fase real',fila.fase_real,'desfase',fila.desfase_ms,'ms | reloj de audio',fila.reloj_audio_ms,'ms');
+        },Math.max(0,P-performance.now()))})(fila,P,cuando);
+      }
+    }
+    for(var key in disparados)if(+key.split(':')[0]<k0-1)delete disparados[key];
+  }
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){escenaVista=e.isIntersecting?e.intersectionRatio:0})},{threshold:[0,.25,.5,.8]}).observe($('escena'));
+  else escenaVista=1;
+
+  // ---------- encender / apagar ----------
+  var ctl=$('ctlSonido'),latiendo=false;
+  function pintarControl(){
+    ctl.setAttribute('aria-pressed',on?'true':'false');
+    ctl.setAttribute('aria-label',on?'Silenciar la música':'Activar el sonido');
+  }
+  function mostrarControl(demora){
+    if(!ctl.hidden)return;
+    ctl.style.animationDelay=demora?demora+'s':'';ctl.hidden=false;ctl.classList.add('entra');revisarControl(true);
+  }
+  // espera a que el audio suene de verdad (destrabado) con la página a la vista: recién ahí se programa lo que tiene que
+  // sonar «ya» (si se programara con el audio trabado, su reloj está quieto y saldría tarde, cuando se destrabe)
+  var esperanAudio=[],mirando=0,mirandoDesde=0;
+  function corriendo(){return new Promise(function(ok){esperanAudio.push(ok);revisarAudio()})}
+  function revisarAudio(){
+    if(ctx&&ctx.state==='running'&&document.visibilityState==='visible'&&esperanAudio.length){
+      var l=esperanAudio;esperanAudio=[];l.forEach(function(f){f()});
+    }
+    clearTimeout(mirando);mirando=0;
+    if(!esperanAudio.length){mirandoDesde=0;return}
+    // se vuelve a mirar solo (el aviso de cambio de estado del iPhone no siempre llega): seguido al principio, después
+    // más tranquilo (si el audio no arranca, por ejemplo porque el iPhone pide otro toque)
+    if(!mirandoDesde)mirandoDesde=performance.now();
+    mirando=setTimeout(revisarAudio,performance.now()-mirandoDesde<5000?25:400);
+  }
+  // cuando el archivo está listo y el audio suena; si el archivo no se pudo traer, «falla»
+  function cuandoSuene(n,fn,falla){
+    listo(n).then(function(){return corriendo().then(fn)},function(){if(falla)corriendo().then(falla)});
+  }
+  // Arranca la función con sonido. conTelon = viene del telón que se abre (t0 = el instante en que empezó a moverse):
+  // telón + ta-da + la cortina MGM que entra con un fundido corto, en ese mismo instante. Lo que llegue tarde (red lenta)
+  // entra desde donde iría: el telón hasta 0,9 s tarde, el ta-da hasta 0,35 s; la música, desde el segundo que corresponda.
+  function arrancar(conTelon,t0){
+    if(!ctx)crear();
+    destrabar();
+    on=true;guardar('si');pintarControl();
+    if(iniciado){var g=maestroGain.gain,n0=ctx.currentTime;g.cancelScheduledValues(n0);g.setValueAtTime(g.value,n0);g.setTargetAtTime(1,n0+.02,.1);return}
+    iniciado=true;
+    maestroGain.gain.setValueAtTime(1,ctx.currentTime);
+    var P=t0||performance.now();function tarde(){return (performance.now()-P)/1000}
+    if(conTelon){
+      // (Javier pidió que las dos cortinas suenen: la de la escena también suena en la primera vuelta)
+      // el telón visible se corre en ~0,6 s: el sonido arranca a los 0,5 s del archivo, donde la tela ya suena fuerte
+      // (lo de antes es un arranque casi mudo que caería con el telón ya afuera). Si llegó tarde, entra por la mitad.
+      // el telón grande suena con la misma cortina que le gusta a Javier en la escena (Javier pidió cambiar el sonido de antes)
+      cuandoSuene('cortina',function(){var d=tarde();if(d<.9)sonar('cortina',ctx.currentTime+.005,{g:.62,off:d,grupo:'telon'});else log('la cortina llegó tarde: no suena')});
+    }
+    cuandoSuene(APERTURA,function(){arrancarMusica(ctx.currentTime+.01,true,conTelon?.7:.5,conTelon?tarde():0)},
+      function(){arrancarMusica(ctx.currentTime+.03,false,.6)}); // sin la cortina MGM: directo a la persecución
+    cargarTodo();
+    if(!latiendo){latiendo=true;setInterval(latido,40)}
+    if(document.visibilityState==='hidden'&&ctx.state==='running')ctx.suspend(); // se abrió con la pestaña oculta: sigue al volver
+    log('arranca la función',conTelon?'con el telón':'desde el control');
+  }
+  function apagar(){
+    on=false;guardar('no');pintarControl();
+    if(!ctx)return;
+    var now=ctx.currentTime;maestroGain.gain.cancelScheduledValues(now);maestroGain.gain.setValueAtTime(maestroGain.gain.value,now);maestroGain.gain.linearRampToValueAtTime(0,now+.15);
+    setTimeout(function(){if(!on&&ctx.state==='running')ctx.suspend()},220);
+    try{if(navigator.audioSession)navigator.audioSession.type='auto'}catch(e){}
+  }
+  function latido(){if(!on||!ctx||ctx.state!=='running')return;mantenerMusica();episodio()}
+
+  // el toque que abre el telón: en ese mismo gesto se destraba el audio (si en esta visita no lo había silenciado).
+  // Si la apertura (telón, ta-da, cortina MGM) ya está decodificada y el audio ya corre, el telón se abre en el acto;
+  // si no, se le pasa a la entrada lo que tiene que esperar (ella pone el tope de 2,5 s).
+  var abrioAntes=!raiz.classList.contains('cerrado'); // (se abrió antes de que cargara esto: sale con el próximo toque)
+  function alAbrir(ev){
+    marcar({ev:'toque'});
+    if(estado==='no')return;
+    try{
+      if(!ctx)crear();
+      destrabar();
+      on=true;guardar('si');
+      var falta=ABRE.filter(function(n){return !buf[n]});
+      if(!falta.length&&ctx.state==='running'){marcar({ev:'listo-al-tocar'});return}
+      marcar({ev:'espera',falta:falta.join(' '),audio:ctx.state});
+      log('al tocar falta:',falta.join(', ')||'nada','| audio',ctx.state,'→ la entrada espera (tope 2,5 s)');
+      var d=ev&&ev.detail;
+      if(d&&d.esperar)d.esperar(Promise.all(ABRE.map(function(n){return listo(n).catch(function(){})}).concat([corriendo()])));
+    }catch(e){log('no se pudo preparar el sonido',e&&e.message)}
+  }
+  // el telón empieza a abrirse (t0): ahí mismo arranca el sonido
+  function alTelon(ev){
+    var t0=ev&&ev.detail&&ev.detail.t0||performance.now();
+    marcar({ev:'telon',t0:Math.round(t0*10)/10});
+    pintarControl();mostrarControl(quieto?.3:1.3);
+    if(estado==='no')return;
+    try{arrancar(true,t0)}catch(e){log('no se pudo arrancar',e&&e.message)}
+  }
+  document.addEventListener('timo:abrir',alAbrir);
+  document.addEventListener('timo:telon',alTelon);
+  document.addEventListener('timo:funcion',function(){marcar({ev:'funcion'})});
+  ctl.addEventListener('click',function(){
+    if(on&&iniciado&&!gestoTrabado)apagar();
+    else{try{arrancar(false)}catch(e){log('no se pudo encender',e&&e.message)}}
+  });
+  // cualquier toque, click o tecla: si el sonido está encendido pero el audio quedó trabado, se destraba ahí mismo
+  function alGesto(){
+    gestoTrabado=!!ctx&&ctx.state!=='running';
+    if(abrioAntes&&!iniciado&&estado!=='no'){abrioAntes=false;try{arrancar(false)}catch(e){}return}
+    if(ctx&&on&&gestoTrabado&&document.visibilityState==='visible')destrabar();
+  }
+  ['pointerup','touchend','keydown','click'].forEach(function(t){addEventListener(t,alGesto,true)});
+  // ---------- pestaña oculta: todo en pausa ----------
+  document.addEventListener('visibilitychange',function(){
+    revisarAudio();
+    if(!ctx||!iniciado)return;
+    if(document.visibilityState==='hidden'){
+      callar('telon',.03); // si se fue en plena apertura, al volver el telón ya está abierto: su sonido no sigue
+      if(ctx.state==='running')ctx.suspend();log('pestaña oculta: audio en pausa');
+    }
+    else if(on){
+      var g=maestroGain.gain,n0=ctx.currentTime;g.cancelScheduledValues(n0);g.setValueAtTime(0,n0);g.setTargetAtTime(1,n0+.03,.12); // vuelve con un fundido corto
+      var r=ctx.resume();if(r&&r.then)r.then(function(){log('pestaña visible: sigue')},function(){}); // si el iPhone pide otro toque, lo destraba alGesto
+    }
+  });
+  addEventListener('pagehide',function(){if(ctx&&ctx.state==='running')ctx.suspend()});
+
+  // ---------- el control nunca tapa un texto, un campo ni un botón ----------
+  // Su lugar es arriba a la derecha. Mientras la página se mueve no cambia de lugar: si lo de abajo lo tapa, se esconde.
+  // Con la página quieta elige: arriba si hay lugar (el cartel le deja ese lugar libre); si no, el rincón de abajo;
+  // si tampoco, sigue escondido. Abajo no va mientras se escribe (el teclado del celular corre las cosas fijas al pie).
+  function lugarDe(abajo){ // el cuadrado de 44 px que ocuparía en ese rincón (el centro no cambia con la escala del apartado)
+    var tenia=ctl.classList.contains('abajo');
+    if(tenia!==abajo)ctl.classList.toggle('abajo',abajo);
+    var r=ctl.getBoundingClientRect(),cx=(r.left+r.right)/2,cy=(r.top+r.bottom)/2;
+    if(tenia!==abajo)ctl.classList.toggle('abajo',tenia);
+    return {left:cx-22,right:cx+22,top:cy-22,bottom:cy+22};
+  }
+  function tapaAlgo(c){
+    var m=4;
+    function choca(r){return r.right>c.left-m&&r.left<c.right+m&&r.bottom>c.top-m&&r.top<c.bottom+m}
+    return window.timoNoTapar().some(function(x){
+      if(!choca(x.r))return false;
+      if(!x.texto)return true;
+      var rg=document.createRange();rg.selectNodeContents(x.texto);
+      return [].some.call(rg.getClientRects(),choca);
+    });
+  }
+  function escribiendo(){var a=document.activeElement;return !!a&&(a.tagName==='INPUT'||a.tagName==='TEXTAREA')}
+  function revisarControl(quieta){
+    if(ctl.hidden||!window.timoNoTapar)return;
+    var abajo=ctl.classList.contains('abajo'),escondido=ctl.classList.contains('apartado');
+    if(!quieta){ // moviéndose: solo se esconde (en el acto), no cambia de lugar
+      if(!escondido&&((abajo&&escribiendo())||tapaAlgo(lugarDe(abajo))))ctl.classList.add('apartado');
+      return;
+    }
+    var destino=!tapaAlgo(lugarDe(false))?false:(!escribiendo()&&!tapaAlgo(lugarDe(true))?true:null);
+    if(destino===null){ctl.classList.add('apartado');return}
+    if(destino!==abajo){ // cambia de rincón: se esconde, se pasa y aparece con el fundido (no se lo ve cruzar)
+      ctl.classList.add('apartado');ctl.classList.toggle('abajo',destino);void ctl.offsetWidth;
+    }
+    ctl.classList.remove('apartado');
+  }
+  var pend=false,tQuieta=0;
+  function alMover(){if(!pend){pend=true;requestAnimationFrame(function(){pend=false;revisarControl(false)})}}
+  function quieta(ms){clearTimeout(tQuieta);tQuieta=setTimeout(function(){revisarControl(true)},ms)}
+  // quieta a los 140 ms: antes de que la persecución busque su carril (200 ms), así el carril ya sabe dónde está el control.
+  // El «¿tapa algo?» corre en el mismo evento de scroll (llega una vez por cuadro, antes de dibujarlo): se esconde en ese cuadro.
+  addEventListener('scroll',function(){revisarControl(false);quieta(140)},{passive:true});
+  addEventListener('resize',function(){alMover();quieta(200)});
+  document.addEventListener('focusin',function(){quieta(60)});document.addEventListener('focusout',function(){quieta(60)});
+  // si algo cambia de tamaño sin scroll (se abre «¿Cuántos van?», aparece un error, las gracias): se vuelve a mirar
+  if('ResizeObserver' in window)new ResizeObserver(function(){quieta(60)}).observe(document.querySelector('main'));
+  if(abrioAntes){
+    // el telón se abrió antes de que llegara esta parte de la página (red muy lenta, tocó enseguida): el sonido entra
+    // ahora, desde donde iría (lo que ya pasó no suena). En el iPhone, recién con el próximo toque.
+    if(window.timoTelon&&estado!=='no'){abrioAntes=false;alTelon({detail:{t0:window.timoTelon.t0}})}
+    else{pintarControl();mostrarControl()}
+  }
+
+  // ---------- escenas al bajar ----------
+  var ESC={
+    persecucion:function(r){
+      var dj=parseFloat(r.style.getPropertyValue('--dj'))||1.3;
+      return [{t:0,n:'corrida',g:.55,duck:-3,hold:.35},{t:(dj*.3+dj*1.08*.38)*1000,n:'zip',g:.5,r:.85}];
+    },
+    espia:[{t:0,n:'@pizz',f:329.6,g:.34},{t:290,n:'@pizz',f:311.1,g:.3},{t:580,n:'@pizz',f:293.7,g:.3},{t:870,n:'@pizz',f:277.2,g:.34},
+           {t:1680,n:'silbato',g:.3,dur:.52,r:1.2},{t:2420,n:'zip',g:.36,r:1.3}],
+    queso:[{t:230,n:'mordisco',g:.75,duck:-3},{t:1070,n:'mordisco',g:.7,r:1.08,duck:-3},{t:1900,n:'mordisco',g:.72,r:.94,duck:-3}]
+  };
+  function tocarLista(lista,grupo,nombre){
+    var P=performance.now();
+    lista.forEach(function(q){
+      var v=sonar(q.n,audioEn(P+q.t),{g:q.g,r:q.r,off:q.off,dur:q.dur,duck:q.duck,hold:q.hold,f:q.f,grupo:grupo});
+      anotar({escena:nombre,sonido:q.n,en_ms:Math.round(q.t),sono:!!v});
+    });
+    log('escena',nombre,':',lista.map(function(q){return q.n+'@'+Math.round(q.t)}).join(' '));
+  }
+  document.addEventListener('timo:escena',function(ev){
+    var d=ev.detail||{};if(!on||!ctx||ctx.state!=='running')return;
+    if(d.estado==='empieza'&&ESC[d.n])tocarLista(typeof ESC[d.n]==='function'?ESC[d.n](d.raiz):ESC[d.n],'esc-'+d.n,d.n);
+    else if(d.estado==='huye'){callar('esc-'+d.n,.06);log('escena',d.n,'se esfuma: sonido afuera')}
+    else if(d.estado==='termina')callar('esc-'+d.n,.1);
+  });
+
+  // ---------- interacción (también con «menos movimiento») ----------
+  function ui(n,o){if(on&&ctx&&ctx.state==='running')sonar(n,ctx.currentTime+.005,o)}
+  var bSi=document.querySelector('.op.si'),bNo=document.querySelector('.op.no');
+  bSi.addEventListener('click',function(){ui('@pop',{de:520,a:1040,d:.07,g:.2})});
+  bNo.addEventListener('click',function(){ui('@pop',{de:520,a:390,d:.08,g:.18})});
+  [].forEach.call(document.querySelectorAll('.cont button'),function(b){
+    b.addEventListener('click',function(){var mas=b.dataset.d==='1';ui('@tic',{de:mas?880:660,a:mas?1180:520,d:.045,g:.16,tipo:'triangle'})});
+  });
+  var err=$('error');
+  new MutationObserver(function(){if(!err.classList.contains('oculto'))ui('@uy',{de:300,a:190,d:.16,g:.2,tipo:'triangle'})}).observe(err,{attributes:true,attributeFilter:['class']});
+  // confirmación: con «Sí» festejo (cornetita + chicos gritando); con «No», algo amable y corto
+  var gr=$('gracias');
+  new MutationObserver(function(){
+    if(gr.classList.contains('oculto')||!on||!ctx||ctx.state!=='running')return;
+    var fueNo=bNo.getAttribute('aria-pressed')==='true';
+    tocarLista(fueNo?[{t:320,n:'xilofono',g:.5,duck:-3,hold:.5}]:[{t:20,n:'cornetita',g:.7,duck:-4,hold:.4},{t:180,n:'yay',g:.5,duck:-3,hold:.8}],'festejo',fueNo?'gracias (No)':'gracias (Sí)');
+  }).observe(gr,{attributes:true,attributeFilter:['class']});
+})();
+</script>
+</body>
+</html>
